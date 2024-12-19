@@ -7,8 +7,7 @@ from lib.prompts import question_template_prompt, question_template_format, temp
 from lib.utils import str_to_json, save_json
 
 
-def create_template(question):
-    solution = SolutionModel()
+def create_template(solution, question):
     openai = OpenAI()
 
     answer = solution.generate_solution(question)
@@ -47,6 +46,8 @@ def create_template(question):
     
 
 if __name__ == "__main__":
+    solution = SolutionModel()
+
     num = int(input('Enter the number of questions to generate: '))
 
     dataset = RandomDataset("openai/gsm8k")
@@ -56,7 +57,7 @@ if __name__ == "__main__":
 
     for ques in questions:
         print(f"Generating template for: {ques}")
-        response = create_template(ques)
+        response = create_template(solution, ques)
         data.append(response)
         print("Template generated successfully!")
 
