@@ -15,7 +15,7 @@ def create_template(question):
 
     question_prompt = question_template_prompt.format(question, answer, question_template_format)
 
-    response = openai.generate_response(question_prompt)
+    response = openai.query(question_prompt)
     response = str_to_json(response)
 
     question_template = response['question']
@@ -23,17 +23,17 @@ def create_template(question):
     question_variables = response['variable_relations']['variables']
 
     equation_prompt = template_equation_prompt.format(question_template, question_variables)
-    equation = openai.generate_response(equation_prompt)
+    equation = openai.query(equation_prompt)
 
     is_valid = validate_relations(equation, response)
 
     if is_valid:
         hint_prompt = hints_prompt.format(question_template, solution_template, hints_format)
-        hints = openai.generate_response(hint_prompt)
+        hints = openai.query(hint_prompt)
         response['hints'] = hints
 
         categorization_prompt = category_prompt.format(question)
-        category = openai.generate_response(categorization_prompt)
+        category = openai.query(categorization_prompt)
         response['category'] = category
 
         difficulty_model = DifficultyModel()
