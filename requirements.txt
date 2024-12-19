@@ -3,4 +3,4 @@ accelerate
 python-dotenv
 datasets
 torch
-bitsandbytes
+bitsandbytes-cpu
