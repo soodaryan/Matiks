@@ -1,24 +1,17 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 import torch
 from torch.nn.parallel import DataParallel
-import bitsandbytes as bnb
 
 
 class SolutionModel:
     def __init__(self):
         model_name = "deepseek-ai/deepseek-math-7b-instruct"
 
-        bnb_config = BitsAndBytesConfig(
-            load_in_8bit=True,
-            quantization_type='fp4' if not bnb.device_has_cuda else 'bnb'
-        )
-
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(
                     model_name,
                     torch_dtype=torch.float16,
                     device_map="auto",
-                    quantization_config=bnb_config,
                     # offload_folder="data"
                 )
         
