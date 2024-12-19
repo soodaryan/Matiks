@@ -1,5 +1,7 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 import torch
+from torch.nn.parallel import DataParallel
+import bitsandbytes as bnb
 
 
 class SolutionModel:
@@ -11,8 +13,11 @@ class SolutionModel:
                     model_name,
                     torch_dtype=torch.float16,
                     device_map="auto",
-                    offload_folder="data"
+                    load_in_8bit=True
+                    # offload_folder="data"
                 )
+        
+        self.model = DataParallel(self.model)
 
         self.model.generation_config = GenerationConfig.from_pretrained(model_name)
         self.model.generation_config.pad_token_id = self.model.generation_config.eos_token_id
