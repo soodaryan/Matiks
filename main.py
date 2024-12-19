@@ -11,11 +11,15 @@ def create_template(solution, question):
     openai = OpenAI()
 
     answer = solution.generate_solution(question)
+    print(f"Answer generated: {answer}")
+    print()
 
     question_prompt = question_template_prompt.format(question, answer, question_template_format)
 
     response = openai.query(question_prompt)
     response = str_to_json(response)
+    print(response)
+    print()
 
     question_template = response['question']
     solution_template = response['solution']
@@ -23,6 +27,8 @@ def create_template(solution, question):
 
     equation_prompt = template_equation_prompt.format(question_template, question_variables)
     equation = openai.query(equation_prompt)
+    print(equation)
+    print()
 
     is_valid = validate_relations(equation, response)
 
