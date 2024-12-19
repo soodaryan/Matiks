@@ -2,7 +2,8 @@ from modules.questions import RandomDataset
 from modules.solution import SolutionModel
 from modules.llms import OpenAI
 from modules.validation import validate_relations
-from lib.prompts import question_template_prompt, question_template_format, template_equation_prompt, hints_prompt, hints_format
+from modules.difficulty_model import DifficultyModel
+from lib.prompts import question_template_prompt, question_template_format, template_equation_prompt, hints_prompt, hints_format, category_prompt
 from lib.utils import str_to_json, save_json
 
 
@@ -31,10 +32,18 @@ def create_template(question):
         hints = openai.generate_response(hint_prompt)
         response['hints'] = hints
 
+        categorization_prompt = category_prompt.format(question)
+        category = openai.generate_response(categorization_prompt)
+        response['category'] = category
+
+        difficulty_model = DifficultyModel()
+        diff_score = difficulty_model.calculate_score(response, category)
+        response['difficulty'] = diff_score
+
         return response
     
     else:
-        return {"error": "Invalid solution generated. Skipping..."}
+        print("Invalid solution generated. Skipping...")
     
 
 if __name__ == "__main__":
