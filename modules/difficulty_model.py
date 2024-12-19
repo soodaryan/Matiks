@@ -21,7 +21,7 @@ class DifficultyModel:
 
     def calculate_score(self, resp, category):
         try:
-            topic_complexity_weight = self.categeory_weight[category]
+            topic_complexity_weight = self.category_weight[category]
 
             num_vars = len(resp['variable_relations']['variables'])
             num_steps = len(resp['solution'].split("."))
