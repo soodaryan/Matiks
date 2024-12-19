@@ -55,8 +55,10 @@ if __name__ == "__main__":
     data = []
 
     for ques in questions:
+        print(f"Generating template for: {ques}")
         response = create_template(ques)
         data.append(response)
+        print("Template generated successfully!")
 
     save_path = "question_templates.json"
     save_json(data, save_path)
