@@ -29,6 +29,7 @@ def create_template(solution, question):
     if is_valid:
         hint_prompt = hints_prompt.format(question_template, solution_template, hints_format)
         hints = openai.query(hint_prompt)
+        hints = str_to_json(hints)
         response['hints'] = hints
 
         categorization_prompt = category_prompt.format(question)
