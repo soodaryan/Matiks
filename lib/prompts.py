@@ -3,7 +3,7 @@ question_template_prompt = """
 
     Solution: {}
 
-    Create templates for these question and solution by adding variables and keeping the language same. Also give me all the variables and relation between them in json format. Enclose variables in curly brackets in json too.
+    Create templates for these question and solution by adding variables and keeping the language same. Also give me all the variables and mathematical relations between them in json format. Enclose variables in curly brackets in json too.
 
     Format : {}
 
@@ -30,7 +30,9 @@ Question: {}
 
 Variables: {}
 
-Convert this question to a single algebraic equation. Just output the equation. These are the available variables.
+Operators: [+, -, *, /]
+
+Given is the question and the available variables. Convert this question to a single mathematical equation with the given operators. Enclose the variables in curly brackets. Just output the equation in string format.
 """
 
 
