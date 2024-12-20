@@ -26,6 +26,7 @@ def validate_relations(equation, resp):
         if key in equation.lower():
             equation = equation.replace(key, str(val))
 
+    equation = equation.replace("{", "").replace("}", "")
     equation = equation.replace("=", "==")
 
     print(equation)
