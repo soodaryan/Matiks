@@ -58,57 +58,33 @@ hints_format = """
 """
 
 
+category_prompt = """Categorize the given question into the following *superclasses* of mathematics problems, and then into a specific *subclass*:  
 
-category_prompt = """
-Question: {}
+*Superclasses*:  
+1. **Sequences and Patterns**: Problems focused on identifying, extending, or analyzing numerical or visual patterns and sequences.  
+2. **Number Theory**: Problems exploring properties and relationships of numbers, including primes, factors, and numeric puzzles.  
+3. **Algebra and Arithmetic Operations**: Problems involving algebraic equations, expressions, and arithmetic operations such as applying BODMAS.  
+4. **Real-Life Applications**: Problems with practical scenarios, including work rates, financial transactions, conversions, and dates or calendars.  
+5. **Probability and Statistics**: Problems centered on analyzing data, calculating probabilities, or interpreting statistical measures.  
+6. **Geometry**: Problems related to shapes, angles, sizes, and spatial reasoning, including area, perimeter, volume, and geometric properties.  
 
-Categorize the given question into the following types of mathematic problems in accordance with the description: 
+*Subclasses*:  
+1. Sequences and Patterns: Arithmetic Sequences, Geometric Sequences, Mixed Sequences, Odd One Out.  
+2. Number Theory: Prime Numbers, Factorization Problems, Number Puzzle.  
+3. Algebra and Arithmetic Operations: Algebra, BODMAS.  
+4. Real-Life Applications: Algebra, Time and Work Problems, Profit and Loss, Currency and Exchange, Calendar Problems.  
+5. Probability and Statistics: Probability and Statistics.  
+6. Geometry: Area and Perimeter, Volume, Angles, Triangles, Circles, Quadrilaterals, Spatial Reasoning.  
 
-Types: 
-    Arithmetic Sequences
-    Geometric Sequences
-    Mixed Sequences
-    Prime Numbers
-    Factorization Problems
-    Odd One Out
-    Number Puzzle
-    Time and Work Problems
-    BODMAS 
-    Algebra
-    Profit and Loss
-    Probability and Statistics
-    Currency and Exchange
+*Question*: {}  
 
-Description:
-    Arithmetic Sequences: Problems involving identifying the next term, common difference, or sum in an arithmetic sequence.  
+Return the *superclass* and the *subclass* of the math problem without any reasoning or explanations.  
 
-    Geometric Sequences: Problems related to identifying patterns in multiplicative terms of a sequence.  
-
-    Mixed Sequences: Problems that combine arithmetic and geometric sequences or introduce another type of mathematical series.  
-
-    Prime Numbers: Problems involving recognition of primes, finding missing primes in a range, or identifying composite numbers.  
-
-    Factorization Problems: Problems that identify patterns in divisors, common multiples, or prime factorization.  
-
-    Odd One Out: Problems where you identify odd elements in a list of numbers, shapes, or patterns.  
-
-    Number Puzzle: Problems involving number manipulation, such as reversing digits or finding sums of squares.  
-
-    Time and Work Problems: Problems involving rates, efficiency, or work done by multiple agents working together.  
-
-    BODMAS: Problems based on applying the BODMAS rule to mathematical expressions.  
-
-    Algebra: Problems involving variables and mathematical operations to find unknown values (e.g., solving equations or simplifying expressions).  
-
-    Profit and Loss: Problems involving buying and selling of items, including cost price, selling price, profit/loss calculations, and percentage analysis.  
-
-    Probability and Statistics: Problems based on basic probability, mean, median, mode, or quick statistical interpretations.  
-
-    Currency and Exchange: Problems involving currency conversions, foreign exchange rates, or transactions with multiple constraints.
-
-    Geometry: Problems on shapes, angles, area, perimeter, and volume.  
-
-    Calendar Problems: Questions about days, dates, weeks, intervals, or leap years.
-
-Return only the type of math problem without any reasoning or explanations.
+*Format*: {}
 """
+
+
+category_format = """{
+    "superclass": "<superclass of the question>",
+    "subclass": "<subclass of the question>"
+}"""

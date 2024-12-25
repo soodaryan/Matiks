@@ -4,3 +4,7 @@ templates.json
 docker-image
 .env
 sed.ppk
+venv
+requests
+lib/__pycache__
+modules/__pycache__
