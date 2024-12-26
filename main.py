@@ -3,8 +3,7 @@ from modules.solution import SolutionModel
 from modules.llms import OpenAI
 from modules.validation import validate_relations
 from modules.difficulty_model import DifficultyModel
-from modules.constraints import var_range, Constraints
-from modules.generation import value_replace
+from modules.constraints import Constraints
 from lib.prompts import question_template_prompt, question_template_format, template_equation_prompt, hints_prompt, hints_format, category_prompt, category_format
 from lib.utils import str_to_json, save_json
 
@@ -53,22 +52,12 @@ def create_template(solution, question):
     
     else:
         print("Invalid solution generated. Skipping...")
-
-
-def generate_questions(data):
-    ranges = var_range(data)
-
-    ques = [x['question'] for x in data]
-
-    new_ques = value_replace(ranges, ques)
-
-    return new_ques
     
 
 if __name__ == "__main__":
     solution = SolutionModel()
 
-    num = int(input('Enter the number of questions to generate: '))
+    num = int(input('Enter the number of templates to generate: '))
 
     dataset = RandomDataset("openai/gsm8k")
     questions = dataset.get_random_sample(num)
