@@ -1,0 +1,675 @@
+[
+    {
+        "question": "John buys {silver_ounces} ounces of silver and twice as much gold. The silver costs ${silver_cost_per_ounce} per ounce. The gold is {gold_price_multiplier} times more expensive per ounce. How much does he spend on everything?",
+        "solution": "John buys {silver_ounces} ounces of silver, so he spends {silver_ounces} * ${silver_cost_per_ounce} = ${silver_total_cost} on silver. He buys twice as much gold as silver, so he buys 2 * {silver_ounces} = {gold_ounces} ounces of gold. The gold is {gold_price_multiplier} times more expensive per ounce than silver, so it costs ${silver_cost_per_ounce} * {gold_price_multiplier} = ${gold_cost_per_ounce} per ounce. Therefore, he spends {gold_ounces} * ${gold_cost_per_ounce} = ${gold_total_cost} on gold. In total, he spends ${silver_total_cost} + ${gold_total_cost} = ${total_spent} on everything. The answer is $\\boxed{{total_spent}}$.",
+        "variable_relations": {
+            "variables": [
+                "silver_ounces",
+                "silver_cost_per_ounce",
+                "gold_price_multiplier",
+                "silver_total_cost",
+                "gold_ounces",
+                "gold_cost_per_ounce",
+                "gold_total_cost",
+                "total_spent"
+            ],
+            "relations": {
+                "silver_total_cost": "{silver_ounces} * {silver_cost_per_ounce}",
+                "gold_ounces": "2 * {silver_ounces}",
+                "gold_cost_per_ounce": "{silver_cost_per_ounce} * {gold_price_multiplier}",
+                "gold_total_cost": "{gold_ounces} * {gold_cost_per_ounce}",
+                "total_spent": "{silver_total_cost} + {gold_total_cost}"
+            },
+            "constraints": {
+                "silver_ounces": "> 0",
+                "silver_cost_per_ounce": "> 0",
+                "gold_price_multiplier": "> 0"
+            }
+        },
+        "hints": [
+            "Calculate the cost of silver by multiplying ounces with price per ounce.",
+            "Determine gold ounces by doubling the silver ounces purchased.",
+            "Find total cost by adding silver and gold expenses together."
+        ],
+        "category": "Profit and Loss",
+        "difficulty": 38.0
+    },
+    {
+        "question": "Tom buys {num_shares} shares of a stock that costs {cost_per_share} each. He sells {num_sold_shares} of those shares for {sell_price_per_share} each. The rest of the shares end up doubling in value. How much profit does he make?",
+        "solution": "Tom buys {num_shares} shares of a stock at {cost_per_share} each, so he spends {num_shares} * {cost_per_share} = {total_spent}. He sells {num_sold_shares} of those shares for {sell_price_per_share} each, so he earns {num_sold_shares} * {sell_price_per_share} = {earnings_from_sold_shares}. He has {num_shares} - {num_sold_shares} = {remaining_shares} shares left. Those {remaining_shares} shares double in value, so they are now worth {remaining_shares} * {cost_per_share} * 2 = {value_of_remaining_shares}. In total, Tom has earned {earnings_from_sold_shares} + {value_of_remaining_shares} = {total_earnings}. Since he spent {total_spent} to buy the shares, his profit is {total_earnings} - {total_spent} = {profit}. The answer is \\boxed{{profit}}.",
+        "variable_relations": {
+            "variables": [
+                "num_shares",
+                "cost_per_share",
+                "num_sold_shares",
+                "sell_price_per_share",
+                "total_spent",
+                "earnings_from_sold_shares",
+                "remaining_shares",
+                "value_of_remaining_shares",
+                "total_earnings",
+                "profit"
+            ],
+            "relations": {
+                "total_spent": "{num_shares} * {cost_per_share}",
+                "earnings_from_sold_shares": "{num_sold_shares} * {sell_price_per_share}",
+                "remaining_shares": "{num_shares} - {num_sold_shares}",
+                "value_of_remaining_shares": "{remaining_shares} * {cost_per_share} * 2",
+                "total_earnings": "{earnings_from_sold_shares} + {value_of_remaining_shares}",
+                "profit": "{total_earnings} - {total_spent}"
+            },
+            "constraints": {
+                "num_shares": "> 0",
+                "cost_per_share": "> 0",
+                "num_sold_shares": ">= 0",
+                "sell_price_per_share": "> 0",
+                "remaining_shares": ">= 0"
+            }
+        },
+        "hints": [
+            "Calculate the total cost of buying all the shares initially.",
+            "Determine the earnings from selling a portion of the shares.",
+            "Find the value of remaining shares after they double in value."
+        ],
+        "category": "Profit and Loss",
+        "difficulty": 42.0
+    },
+    {
+        "question": "Kate bought {packs_red} packs of red bouncy balls and {packs_yellow} packs of yellow bouncy balls. Each pack contained {balls_per_pack} bouncy balls. How many more red bouncy balls than yellow bouncy balls did Kate buy?",
+        "solution": "Kate bought {packs_red} packs of red bouncy balls, so she bought a total of {packs_red} * {balls_per_pack} = {total_red} red bouncy balls. She also bought {packs_yellow} packs of yellow bouncy balls, so she bought a total of {packs_yellow} * {balls_per_pack} = {total_yellow} yellow bouncy balls. To find out how many more red bouncy balls than yellow bouncy balls Kate bought, we subtract the number of yellow bouncy balls from the number of red bouncy balls: {total_red} - {total_yellow} = {difference}. Therefore, Kate bought {difference} more red bouncy balls than yellow bouncy balls. The answer is $\\boxed{{difference}}$.",
+        "variable_relations": {
+            "variables": [
+                "packs_red",
+                "packs_yellow",
+                "balls_per_pack",
+                "total_red",
+                "total_yellow",
+                "difference"
+            ],
+            "relations": {
+                "total_red": "{packs_red} * {balls_per_pack}",
+                "total_yellow": "{packs_yellow} * {balls_per_pack}",
+                "difference": "{total_red} - {total_yellow}"
+            },
+            "constraints": {
+                "packs_red": "> 0",
+                "packs_yellow": "> 0",
+                "balls_per_pack": "> 0"
+            }
+        },
+        "hints": [
+            "Calculate total red balls by multiplying packs and balls per pack.",
+            "Calculate total yellow balls using the same method as for red balls.",
+            "Subtract total yellow balls from total red balls to find the difference."
+        ],
+        "category": "BODMAS",
+        "difficulty": 26.0
+    },
+    {
+        "question": "Question: {name} needs to take a new prescription. The first day {pronoun} needs to take {initial_pills} pill. Each day {pronoun} must take {increment} more pills than the previous day. How many pills will {pronoun} take in a week?",
+        "solution": "Solution: On the first day, {name} takes {initial_pills} pill.\nOn the second day, {pronoun} takes {initial_pills} + {increment} = {second_day_pills} pills.\nOn the third day, {pronoun} takes {second_day_pills} + {increment} = {third_day_pills} pills.\nOn the fourth day, {pronoun} takes {third_day_pills} + {increment} = {fourth_day_pills} pills.\nOn the fifth day, {pronoun} takes {fourth_day_pills} + {increment} = {fifth_day_pills} pills.\nOn the sixth day, {pronoun} takes {fifth_day_pills} + {increment} = {sixth_day_pills} pills.\nOn the seventh day, {pronoun} takes {sixth_day_pills} + {increment} = {seventh_day_pills} pills.\nIn total, {name} takes {total_pills} pills in a week.\nThe answer is $\\boxed{{total_pills}}$.",
+        "variable_relations": {
+            "variables": [
+                "initial_pills",
+                "increment",
+                "second_day_pills",
+                "third_day_pills",
+                "fourth_day_pills",
+                "fifth_day_pills",
+                "sixth_day_pills",
+                "seventh_day_pills",
+                "total_pills"
+            ],
+            "relations": {
+                "second_day_pills": "{initial_pills} + {increment}",
+                "third_day_pills": "{second_day_pills} + {increment}",
+                "fourth_day_pills": "{third_day_pills} + {increment}",
+                "fifth_day_pills": "{fourth_day_pills} + {increment}",
+                "sixth_day_pills": "{fifth_day_pills} + {increment}",
+                "seventh_day_pills": "{sixth_day_pills} + {increment}",
+                "total_pills": "{initial_pills} + {second_day_pills} + {third_day_pills} + {fourth_day_pills} + {fifth_day_pills} + {sixth_day_pills} + {seventh_day_pills}"
+            },
+            "constraints": {
+                "initial_pills": "initial_pills > 0",
+                "increment": "increment > 0"
+            }
+        },
+        "hints": [
+            "Start by calculating the number of pills taken each day.",
+            "Remember, each day adds more pills than the previous day.",
+            "Sum the pills taken each day over the entire week."
+        ],
+        "category": "Arithmetic Sequences",
+        "difficulty": 32.0
+    },
+    {
+        "question": "A {job} has to spend ${cost_per_gallon} per gallon of gas. {pronoun} can drive {miles_per_gallon} miles per gallon. {pronoun} drives at a rate of {miles_per_hour} miles per hour. If {pronoun} is paid ${pay_per_mile} per mile, how much money does {pronoun} make if {pronoun} drives for {hours_driven} hours?",
+        "solution": "If the {job} drives for {hours_driven} hours at a rate of {miles_per_hour} miles per hour, {pronoun} will drive a total of {hours_driven} * {miles_per_hour} = {total_miles} miles. If {pronoun} can drive {miles_per_gallon} miles per gallon of gas, {pronoun} will need {total_miles} / {miles_per_gallon} = {gallons_needed} gallons of gas. If {pronoun} has to spend ${cost_per_gallon} per gallon of gas, {pronoun} will spend a total of {gallons_needed} * ${cost_per_gallon} = ${total_gas_cost} on gas. If {pronoun} is paid ${pay_per_mile} per mile, {pronoun} will make a total of {total_miles} * ${pay_per_mile} = ${total_earnings} for driving {total_miles} miles. However, {pronoun} has to subtract the cost of gas from {pronoun} earnings, so {pronoun} total earnings will be ${total_earnings} - ${total_gas_cost} = ${net_earnings}. The answer is $\\boxed{{net_earnings}}$.",
+        "variable_relations": {
+            "variables": [
+                "cost_per_gallon",
+                "miles_per_gallon",
+                "miles_per_hour",
+                "pay_per_mile",
+                "hours_driven",
+                "total_miles",
+                "gallons_needed",
+                "total_gas_cost",
+                "total_earnings",
+                "net_earnings"
+            ],
+            "relations": {
+                "total_miles": "{hours_driven} * {miles_per_hour}",
+                "gallons_needed": "{total_miles} / {miles_per_gallon}",
+                "total_gas_cost": "{gallons_needed} * {cost_per_gallon}",
+                "total_earnings": "{total_miles} * {pay_per_mile}",
+                "net_earnings": "{total_earnings} - {total_gas_cost}"
+            },
+            "constraints": {
+                "hours_driven": "hours_driven > 0",
+                "miles_per_hour": "miles_per_hour > 0",
+                "miles_per_gallon": "miles_per_gallon > 0",
+                "cost_per_gallon": "cost_per_gallon > 0",
+                "pay_per_mile": "pay_per_mile > 0"
+            }
+        },
+        "hints": [
+            "Calculate total miles by multiplying hours driven by miles per hour.",
+            "Determine gallons needed by dividing total miles by miles per gallon.",
+            "Subtract total gas cost from total earnings to find net earnings."
+        ],
+        "category": "Profit and Loss",
+        "difficulty": 41.0
+    },
+    {
+        "question": "Sally is saving up for a trip to {destination}. She already has ${saved_amount} saved. It costs her ${parking_cost} to park, ${entry_cost} to get into the park and ${meal_pass_cost} for a meal pass. {destination} is {one_way_distance} miles away and her car gets {miles_per_gallon} miles per gallon of gas. If gas costs ${gas_cost_per_gallon} a gallon, how much more will she have to save up?",
+        "solution": "First, let's calculate the total cost of the trip to {destination}. \n\nThe cost of parking is ${parking_cost}.\nThe cost of getting into the park is ${entry_cost}.\nThe cost of the meal pass is ${meal_pass_cost}.\n\nSo, the total cost of the trip without considering the cost of gas is ${parking_cost} + ${entry_cost} + ${meal_pass_cost} = {total_non_gas_cost}.\n\nNext, let's calculate the cost of gas for the round trip to {destination} and back. \n\nThe distance to {destination} is {one_way_distance} miles and her car gets {miles_per_gallon} miles per gallon of gas. So, she will need {one_way_distance}/{miles_per_gallon} = {one_way_gallons} gallons of gas for the trip to {destination}. Since she has to return, she will need another {one_way_gallons} gallons of gas, so the total gas needed is {one_way_gallons} + {one_way_gallons} = {total_gallons} gallons.\n\nThe cost of gas is ${gas_cost_per_gallon} per gallon, so the total cost of gas for the round trip is {total_gallons} * ${gas_cost_per_gallon} = {total_gas_cost}.\n\nSo, the total cost of the trip including the cost of gas is {total_non_gas_cost} + {total_gas_cost} = {total_trip_cost}.\n\nSally already has ${saved_amount} saved, so she will need to save up an additional {total_trip_cost} - ${saved_amount} = {additional_savings_needed}.\n\nSo the answer is $\\boxed{{additional_savings_needed}}$.",
+        "variable_relations": {
+            "variables": [
+                "saved_amount",
+                "parking_cost",
+                "entry_cost",
+                "meal_pass_cost",
+                "one_way_distance",
+                "miles_per_gallon",
+                "gas_cost_per_gallon",
+                "total_non_gas_cost",
+                "one_way_gallons",
+                "total_gallons",
+                "total_gas_cost",
+                "total_trip_cost",
+                "additional_savings_needed"
+            ],
+            "relations": {
+                "total_non_gas_cost": "{parking_cost} + {entry_cost} + {meal_pass_cost}",
+                "one_way_gallons": "{one_way_distance} / {miles_per_gallon}",
+                "total_gallons": "{one_way_gallons} * 2",
+                "total_gas_cost": "{total_gallons} * {gas_cost_per_gallon}",
+                "total_trip_cost": "{total_non_gas_cost} + {total_gas_cost}",
+                "additional_savings_needed": "{total_trip_cost} - {saved_amount}"
+            },
+            "constraints": {}
+        },
+        "hints": [
+            "Calculate the total cost of parking, entry, and meal pass first.",
+            "Determine the gas needed for a round trip and its total cost.",
+            "Subtract the saved amount from the total trip cost to find additional savings needed."
+        ],
+        "category": "Currency and Exchange",
+        "difficulty": 47.0
+    },
+    {
+        "question": "Aaron is gathering can lids to take to the recycling center. He uses {num_boxes} equal-sized boxes of canned tomatoes and adds the lids he gets to the {initial_lids} can lids he already has. He is now taking {total_lids} can lids to the recycling center. How many cans lids did he get from each box?",
+        "solution": "Aaron already has {initial_lids} can lids.\nHe is now taking {total_lids} can lids to the recycling center.\nSo, he got {total_lids} - {initial_lids} = {lids_from_boxes} can lids from the boxes of canned tomatoes.\nHe used {num_boxes} equal-sized boxes of canned tomatoes.\nTherefore, he got {lids_from_boxes} / {num_boxes} = {lids_per_box} can lids from each box.\nThe answer is \\boxed{{lids_per_box}}.",
+        "variable_relations": {
+            "variables": [
+                "num_boxes",
+                "initial_lids",
+                "total_lids",
+                "lids_from_boxes",
+                "lids_per_box"
+            ],
+            "relations": {
+                "lids_from_boxes": "{total_lids} - {initial_lids}",
+                "lids_per_box": "{lids_from_boxes} / {num_boxes}"
+            },
+            "constraints": {
+                "num_boxes": "> 0",
+                "initial_lids": ">= 0",
+                "total_lids": ">= initial_lids"
+            }
+        },
+        "hints": [
+            "Start by calculating the total lids obtained from the boxes.",
+            "Subtract the initial lids from the total lids to find lids from boxes.",
+            "Divide the lids from boxes by the number of boxes for lids per box."
+        ],
+        "category": "Algebra",
+        "difficulty": 37.0
+    },
+    {
+        "question": "Mr. {name} is a dairy cow farmer with cows producing {daily_milk_production} gallons of milk every day. The expenses for maintenance of the dairy farm and purchase of feeds is ${monthly_expenses} per month. Calculate his total income in {month} if he sells 1 gallon of milk at ${price_per_gallon}.",
+        "solution": "In {month}, there are {days_in_month} days. So, the total amount of milk produced in {month} is {daily_milk_production} gallons/day x {days_in_month} days = {total_milk_produced} gallons. If Mr. {name} sells 1 gallon of milk at ${price_per_gallon}, his total income from selling milk in {month} is {total_milk_produced} gallons x ${price_per_gallon}/gallon = ${total_income_from_milk}. His total expenses for maintenance and feeds in {month} is ${monthly_expenses}. Therefore, his total income in {month} is ${total_income_from_milk} - ${monthly_expenses} = ${net_income}. The answer is $\\boxed{{net_income}}$.",
+        "variable_relations": {
+            "variables": [
+                "daily_milk_production",
+                "monthly_expenses",
+                "month",
+                "price_per_gallon",
+                "days_in_month",
+                "total_milk_produced",
+                "total_income_from_milk",
+                "net_income"
+            ],
+            "relations": {
+                "total_milk_produced": "{daily_milk_production} * {days_in_month}",
+                "total_income_from_milk": "{total_milk_produced} * {price_per_gallon}",
+                "net_income": "{total_income_from_milk} - {monthly_expenses}"
+            },
+            "constraints": {
+                "days_in_month": "days_in_month > 0",
+                "daily_milk_production": "daily_milk_production > 0",
+                "monthly_expenses": "monthly_expenses >= 0",
+                "price_per_gallon": "price_per_gallon > 0"
+            }
+        },
+        "hints": [
+            "Calculate total milk produced by multiplying daily production with days in the month.",
+            "Determine income by multiplying total milk produced with price per gallon.",
+            "Subtract monthly expenses from total income to find net income for the month."
+        ],
+        "category": "Profit and Loss",
+        "difficulty": 37.5
+    },
+    {
+        "question": "The class plans to take a field trip to the {location}. The cost to rent a {transportation} is {transportation_cost}. The cost of admission is {admission_cost} per student. The {role} is allowed in for free. If the class has a budget of {budget}, how many students can go on the field trip?",
+        "solution": "The cost to rent a {transportation} is {transportation_cost}. The cost of admission is {admission_cost} per student. The {role} is allowed in for free. The class has a budget of {budget}. Let's assume the number of students that can go on the field trip is {x}. The total cost of the field trip is the cost of the {transportation} plus the cost of admission for each student. So, the total cost is {transportation_cost} + {admission_cost}{x}. We know that the total cost cannot exceed the budget of {budget}. Therefore, we have the inequality {transportation_cost} + {admission_cost}{x} \u2264 {budget}. To solve for {x}, we subtract {transportation_cost} from both sides of the inequality: {admission_cost}{x} \u2264 {budget_minus_transportation_cost}. Then, we divide both sides of the inequality by {admission_cost}: {x} \u2264 {max_students}. So, the number of students that can go on the field trip is less than or equal to {max_students}. The answer is \\boxed{{max_students}}.",
+        "variable_relations": {
+            "variables": [
+                "location",
+                "transportation",
+                "transportation_cost",
+                "admission_cost",
+                "role",
+                "budget",
+                "x",
+                "budget_minus_transportation_cost",
+                "max_students"
+            ],
+            "relations": {
+                "budget_minus_transportation_cost": "{budget} - {transportation_cost}",
+                "max_students": "{budget_minus_transportation_cost} / {admission_cost}"
+            },
+            "constraints": {
+                "x": "{admission_cost}{x} \u2264 {budget_minus_transportation_cost}"
+            }
+        },
+        "hints": [
+            "Calculate total cost by adding transportation and student admission costs.",
+            "Subtract transportation cost from budget to find remaining amount for admissions.",
+            "Divide remaining budget by admission cost to find maximum students allowed."
+        ],
+        "category": "Algebra",
+        "difficulty": 46.5
+    },
+    {
+        "question": "Mr. {name} bought {multiplier} times as many toys for his younger son as he bought for his elder son. If the elder son received {elder_toys} toys, how many toys did Mr. {name} buy?",
+        "solution": "Let's denote the number of toys Mr. {name} bought for his elder son as E and the number of toys he bought for his younger son as Y.\n\nFrom the problem, we know that E = {elder_toys}.\n\nThe problem also tells us that Mr. {name} bought {multiplier} times as many toys for his younger son as he bought for his elder son. We can express this as Y = {multiplier}E.\n\nSubstituting E = {elder_toys} into the equation Y = {multiplier}E, we get Y = {multiplier} * {elder_toys} = {younger_toys}.\n\nSo, Mr. {name} bought {younger_toys} toys for his younger son.\n\nThe total number of toys Mr. {name} bought is the sum of the toys he bought for his elder son and his younger son, which is E + Y = {elder_toys} + {younger_toys} = {total_toys}.\n\nSo the answer is $\\boxed{{total_toys}}$.",
+        "variable_relations": {
+            "variables": [
+                "name",
+                "multiplier",
+                "elder_toys",
+                "younger_toys",
+                "total_toys"
+            ],
+            "relations": {
+                "younger_toys": "{multiplier} * {elder_toys}",
+                "total_toys": "{elder_toys} + {younger_toys}"
+            },
+            "constraints": {
+                "multiplier": "> 0",
+                "elder_toys": "> 0"
+            }
+        },
+        "hints": [
+            "Start by identifying the number of toys for the elder son.",
+            "Calculate the toys for the younger son using the multiplier.",
+            "Add both quantities to find the total number of toys bought."
+        ],
+        "category": "Algebra",
+        "difficulty": 40.0
+    },
+    {
+        "question": "It takes {time_to_hidden_lake} minutes for {person} to go to {destination_1}. From {destination_1}, {person} has to walk back to the {starting_point} and it takes {time_back_to_start} minutes. When {person} arrives there, {person} will have been gone from the {starting_point} {total_time_gone} minutes altogether. If {person} had walked to the {destination_2} from the {starting_point} before taking the {time_to_hidden_lake} minute walk to {destination_1}, how long is the walk from {starting_point} to the {destination_2}?",
+        "solution": "Let's denote the time it takes to walk from the {starting_point} to the {destination_2} as {time_to_destination_2}. We know that {person} spends {time_to_hidden_lake} minutes walking from the {starting_point} to {destination_1}, {time_back_to_start} minutes walking back to the {starting_point}, and {total_time_gone} minutes in total. So, we can set up the equation as follows: {time_to_hidden_lake} (walk to {destination_1}) + {time_back_to_start} (walk back to {starting_point}) + {time_to_destination_2} (walk from {starting_point} to {destination_2}) = {total_time_gone} (total time) Solving for {time_to_destination_2}, we get: {time_to_destination_2} = {total_time_gone} - {time_to_hidden_lake} - {time_back_to_start} {time_to_destination_2} = {calculated_time_to_destination_2} So, the walk from the {starting_point} to the {destination_2} takes {calculated_time_to_destination_2} minutes. So the answer is $\\boxed{{calculated_time_to_destination_2}}$.",
+        "variable_relations": {
+            "variables": [
+                "time_to_hidden_lake",
+                "person",
+                "destination_1",
+                "starting_point",
+                "time_back_to_start",
+                "total_time_gone",
+                "destination_2",
+                "time_to_destination_2",
+                "calculated_time_to_destination_2"
+            ],
+            "relations": {
+                "time_to_destination_2": "{total_time_gone} - {time_to_hidden_lake} - {time_back_to_start}",
+                "calculated_time_to_destination_2": "{total_time_gone} - {time_to_hidden_lake} - {time_back_to_start}"
+            },
+            "constraints": {}
+        },
+        "hints": [
+            "Calculate total time spent walking to and from destinations.",
+            "Subtract time spent walking to and from Hidden Lake from total time.",
+            "Remaining time is the walk from Park Office to Lake Park restaurant."
+        ],
+        "category": "Algebra",
+        "difficulty": 42.0
+    },
+    {
+        "question": "Alfred is storing a {amount_per_month} of {item} each month for the next {duration} years. If {stolen_amount} are stolen and {donation_amount} are given to him as a donation, how many {item} does he have at the end of the {duration} years.",
+        "solution": "Alfred is storing a {amount_per_month} of {item} each month for {duration} years, which is a total of {duration} years x 12 months/year = {total_months} months. If he stores a {amount_per_month} of {item} each month, then he will have a total of {total_months} months x {amount_per_month} = {initial_total} of {item}. If {stolen_amount} are stolen, then he will have {initial_total} - {stolen_amount} = {after_theft} of {item}. If {donation_amount} are given to him as a donation, then he will have {after_theft} + {donation_amount} = {final_total} of {item}. Therefore, Alfred will have {final_total} of {item} at the end of the {duration} years. The answer is \\boxed{{final_total}}.",
+        "variable_relations": {
+            "variables": [
+                "amount_per_month",
+                "item",
+                "duration",
+                "stolen_amount",
+                "donation_amount",
+                "total_months",
+                "initial_total",
+                "after_theft",
+                "final_total"
+            ],
+            "relations": {
+                "total_months": "{duration} * 12",
+                "initial_total": "{total_months} * {amount_per_month}",
+                "after_theft": "{initial_total} - {stolen_amount}",
+                "final_total": "{after_theft} + {donation_amount}"
+            },
+            "constraints": {
+                "duration": "duration > 0",
+                "amount_per_month": "amount_per_month > 0",
+                "stolen_amount": "stolen_amount >= 0",
+                "donation_amount": "donation_amount >= 0"
+            }
+        },
+        "hints": [
+            "Calculate total months by multiplying years by 12.",
+            "Multiply total months by amount stored each month for initial total.",
+            "Subtract stolen amount and add donation to find final total."
+        ],
+        "category": "BODMAS",
+        "difficulty": 31.5
+    },
+    {
+        "question": "Jenna is planning a road trip. She plans on driving the first {distance1} miles, and her friend will drive the last {distance2} miles. They plan on taking {number_of_breaks} {break_duration}-minute breaks. If Jenna drives {speed1} miles per hour and her friend drives {speed2} miles per hour, how many hours will they spend on the road trip?",
+        "solution": "Jenna plans on driving the first {distance1} miles at a speed of {speed1} miles per hour. To find out how many hours she will spend driving, we divide the total distance by her speed. So, {distance1} miles / {speed1} miles per hour = {time1} hours.\n\nHer friend will drive the last {distance2} miles at a speed of {speed2} miles per hour. Similarly, we divide the total distance by her speed to find out how many hours she will spend driving. So, {distance2} miles / {speed2} miles per hour = {time2} hours.\n\nThey plan on taking {number_of_breaks} {break_duration}-minute breaks. Since there are 60 minutes in an hour, each break is {break_duration} minutes / 60 = {break_time} hours. So, the total time spent on breaks is {number_of_breaks} breaks * {break_time} hours/break = {total_break_time} hours.\n\nAdding up the time Jenna spends driving, the time her friend spends driving, and the time spent on breaks, we get the total time spent on the road trip. So, {time1} hours + {time2} hours + {total_break_time} hours = {total_time} hours.\n\nSo the answer is $\\boxed{{total_time}}$.",
+        "variable_relations": {
+            "variables": [
+                "distance1",
+                "distance2",
+                "number_of_breaks",
+                "break_duration",
+                "speed1",
+                "speed2",
+                "time1",
+                "time2",
+                "break_time",
+                "total_break_time",
+                "total_time"
+            ],
+            "relations": {
+                "time1": "{distance1} / {speed1}",
+                "time2": "{distance2} / {speed2}",
+                "break_time": "{break_duration} / 60",
+                "total_break_time": "{number_of_breaks} * {break_time}",
+                "total_time": "{time1} + {time2} + {total_break_time}"
+            },
+            "constraints": {}
+        },
+        "hints": [
+            "Calculate Jenna's driving time by dividing distance by her speed.",
+            "Determine her friend's driving time using the same method.",
+            "Add driving times and break time for total road trip duration."
+        ],
+        "category": "Time and Work Problems",
+        "difficulty": 48.0
+    },
+    {
+        "question": "In a newspaper, each one of {x} pages holds {a} photos and each of another {y} pages hold {b} photos. How many photos are used in the newspaper?",
+        "solution": "The number of photos on the {x} pages is {x}*{a} = {photos_on_x_pages} photos.\nThe number of photos on the {y} pages is {y}*{b} = {photos_on_y_pages} photos.\nThe total number of photos used in the newspaper is {photos_on_x_pages}+{photos_on_y_pages} = {total_photos} photos.\nSo the answer is $\\boxed{{total_photos}}$.",
+        "variable_relations": {
+            "variables": [
+                "x",
+                "a",
+                "y",
+                "b",
+                "photos_on_x_pages",
+                "photos_on_y_pages",
+                "total_photos"
+            ],
+            "relations": {
+                "photos_on_x_pages": "{x}*{a}",
+                "photos_on_y_pages": "{y}*{b}",
+                "total_photos": "{photos_on_x_pages}+{photos_on_y_pages}"
+            },
+            "constraints": {
+                "x": "x > 0",
+                "a": "a > 0",
+                "y": "y > 0",
+                "b": "b > 0"
+            }
+        },
+        "hints": [
+            "Calculate photos on {x} pages by multiplying {x} and {a}.",
+            "Calculate photos on {y} pages by multiplying {y} and {b}.",
+            "Add results from both calculations to find the total number of photos."
+        ],
+        "category": "BODMAS",
+        "difficulty": 27.0
+    },
+    {
+        "question": "A carnival snack booth made {popcorn_earnings} selling popcorn each day. It made {cotton_candy_multiplier} times as much selling cotton candy. For a {activity_days}-day activity, the booth has to pay {rent_cost} rent and {ingredients_cost} for the cost of the ingredients. How much did the booth earn for {activity_days} days after paying the rent and the cost of ingredients?",
+        "solution": "The booth made {popcorn_earnings} selling popcorn each day, so for {activity_days} days, it made {popcorn_earnings}*{activity_days} = {total_popcorn_earnings} selling popcorn. It made {cotton_candy_multiplier} times as much selling cotton candy, so for {activity_days} days, it made {total_popcorn_earnings}*{cotton_candy_multiplier} = {total_cotton_candy_earnings} selling cotton candy. The total earnings for {activity_days} days is {total_popcorn_earnings}+{total_cotton_candy_earnings} = {total_earnings}. The booth has to pay {rent_cost} rent and {ingredients_cost} for the cost of ingredients, so the total expenses for {activity_days} days is {rent_cost}+{ingredients_cost} = {total_expenses}. The booth earned {total_earnings} for {activity_days} days after paying the rent and the cost of ingredients, so the earnings are {total_earnings}-{total_expenses} = {net_earnings}. So the answer is \\boxed{{net_earnings}}.",
+        "variable_relations": {
+            "variables": [
+                "popcorn_earnings",
+                "cotton_candy_multiplier",
+                "activity_days",
+                "rent_cost",
+                "ingredients_cost",
+                "total_popcorn_earnings",
+                "total_cotton_candy_earnings",
+                "total_earnings",
+                "total_expenses",
+                "net_earnings"
+            ],
+            "relations": {
+                "total_popcorn_earnings": "{popcorn_earnings}*{activity_days}",
+                "total_cotton_candy_earnings": "{total_popcorn_earnings}*{cotton_candy_multiplier}",
+                "total_earnings": "{total_popcorn_earnings}+{total_cotton_candy_earnings}",
+                "total_expenses": "{rent_cost}+{ingredients_cost}",
+                "net_earnings": "{total_earnings}-{total_expenses}"
+            },
+            "constraints": {}
+        },
+        "hints": [
+            "Calculate total popcorn earnings by multiplying daily earnings with activity days.",
+            "Determine cotton candy earnings by multiplying popcorn earnings with the given multiplier.",
+            "Subtract total expenses from combined earnings to find net earnings for the activity."
+        ],
+        "category": "Profit and Loss",
+        "difficulty": 41.0
+    },
+    {
+        "question": "Carlos has some gold quarters. If he spends them in a store, they are worth the regular amount. If he melts them down, he can get ${gold_value_per_ounce} per ounce. Each quarter weighs {quarter_weight} of an ounce. How many times more money would he get from melting them down instead of spending them in a store?",
+        "solution": "Each gold quarter weighs {quarter_weight} of an ounce, so if Carlos has {x} gold quarters, the total weight of the gold quarters is ({quarter_weight}) * {x} ounces. If Carlos melts down the gold quarters, he can get ${gold_value_per_ounce} per ounce, so the total amount of money he can get is ${gold_value_per_ounce} * ({quarter_weight}) * {x} = ${melt_value_per_quarter}x. If Carlos spends the gold quarters in a store, they are worth the regular amount, which is ${store_value_per_quarter} per quarter. So the total amount of money he can get is ${store_value_per_quarter} * {x}. To find out how many times more money Carlos would get from melting them down instead of spending them in a store, we divide the amount of money he can get from melting them down by the amount of money he can get from spending them in a store: (${melt_value_per_quarter}x) / (${store_value_per_quarter} * {x}) = ${melt_value_per_quarter} / ${store_value_per_quarter} = {times_more}. Therefore, Carlos would get {times_more} times more money from melting them down instead of spending them in a store. The answer is \\boxed{{times_more}}.",
+        "variable_relations": {
+            "variables": [
+                "gold_value_per_ounce",
+                "quarter_weight",
+                "x",
+                "melt_value_per_quarter",
+                "store_value_per_quarter",
+                "times_more"
+            ],
+            "relations": {
+                "melt_value_per_quarter": "{gold_value_per_ounce} * {quarter_weight}",
+                "times_more": "{melt_value_per_quarter} / {store_value_per_quarter}"
+            },
+            "constraints": {
+                "x": "x > 0"
+            }
+        },
+        "hints": [
+            "Calculate the total weight of the quarters in ounces.",
+            "Determine the money from melting based on weight and gold value per ounce.",
+            "Compare the money from melting to the store value per quarter."
+        ],
+        "category": "Profit and Loss",
+        "difficulty": 34.0
+    },
+    {
+        "question": "There were {initial_amount} dollars in the cookie jar. Doris spent {doris_spent} from the cookie jar. Martha spent half as much as Doris. How much money, in dollars, was left in the cookie jar?",
+        "solution": "Doris spent {doris_spent} from the cookie jar, so there was {initial_amount} - {doris_spent} = {after_doris_spent} left in the cookie jar. Martha spent half as much as Doris, so she spent {doris_spent} / 2 = {martha_spent}. Therefore, there was {after_doris_spent} - {martha_spent} = {final_amount} left in the cookie jar. The answer is $\\boxed{{final_amount}}$.",
+        "variable_relations": {
+            "variables": [
+                "initial_amount",
+                "doris_spent",
+                "after_doris_spent",
+                "martha_spent",
+                "final_amount"
+            ],
+            "relations": {
+                "after_doris_spent": "{initial_amount} - {doris_spent}",
+                "martha_spent": "{doris_spent} / 2",
+                "final_amount": "{after_doris_spent} - {martha_spent}"
+            },
+            "constraints": {
+                "initial_amount": "{initial_amount} > 0",
+                "doris_spent": "{doris_spent} > 0",
+                "after_doris_spent": "{after_doris_spent} >= 0",
+                "martha_spent": "{martha_spent} >= 0",
+                "final_amount": "{final_amount} >= 0"
+            }
+        },
+        "hints": [
+            "Calculate how much money is left after Doris spends from the jar.",
+            "Determine how much Martha spends, which is half of what Doris spent.",
+            "Subtract both Doris's and Martha's spending from the initial amount to find the remainder."
+        ],
+        "category": "BODMAS",
+        "difficulty": 24.0
+    },
+    {
+        "question": "Emily bought {packs_bought} packs of candy necklaces to give her classmates at school for Valentine\u2019s Day. Each pack had {necklaces_per_pack} candy necklaces in it. Emily opened one pack at a time. After her classmates took as many as they wanted, there were {necklaces_left} candy necklaces left. How many packs did Emily open for her classmates?",
+        "solution": "Emily bought {packs_bought} packs of candy necklaces, and each pack had {necklaces_per_pack} candy necklaces. So, the total number of candy necklaces she bought is {packs_bought} packs * {necklaces_per_pack} necklaces/pack = {total_necklaces} necklaces.\n\nAfter her classmates took as many as they wanted, there were {necklaces_left} candy necklaces left. This means that her classmates took {total_necklaces} total necklaces - {necklaces_left} left = {necklaces_taken} necklaces.\n\nSince each pack has {necklaces_per_pack} necklaces, the number of packs Emily opened for her classmates is {necklaces_taken} necklaces / {necklaces_per_pack} necklaces/pack = {packs_opened} packs.\n\nSo the answer is $\\boxed{{packs_opened}}$.",
+        "variable_relations": {
+            "variables": [
+                "packs_bought",
+                "necklaces_per_pack",
+                "necklaces_left",
+                "total_necklaces",
+                "necklaces_taken",
+                "packs_opened"
+            ],
+            "relations": {
+                "total_necklaces": "{packs_bought} * {necklaces_per_pack}",
+                "necklaces_taken": "{total_necklaces} - {necklaces_left}",
+                "packs_opened": "{necklaces_taken} / {necklaces_per_pack}"
+            },
+            "constraints": {
+                "packs_bought": "> 0",
+                "necklaces_per_pack": "> 0",
+                "necklaces_left": ">= 0",
+                "total_necklaces": ">= 0",
+                "necklaces_taken": ">= 0",
+                "packs_opened": ">= 0"
+            }
+        },
+        "hints": [
+            "Calculate total necklaces by multiplying packs bought and necklaces per pack.",
+            "Subtract necklaces left from total necklaces to find how many were taken.",
+            "Divide necklaces taken by necklaces per pack to find packs opened."
+        ],
+        "category": "Algebra",
+        "difficulty": 39.0
+    },
+    {
+        "question": "A cookfire burns {burn_rate} logs every hour. It was built with {initial_logs} logs to start. If it gets {added_logs} more logs added to it at the end of every hour, how many logs will be left after {hours} hours?",
+        "solution": "Let's break down the problem:\n\n1. The cookfire burns {burn_rate} logs every hour.\n2. It starts with {initial_logs} logs.\n3. Every hour, {added_logs} more logs are added.\n\nWe need to find out how many logs will be left after {hours} hours.\n\nLet's start with the initial number of logs:\n\nAfter the first hour, the cookfire burns {burn_rate} logs, so we subtract {burn_rate} from the initial {initial_logs} logs:\n{initial_logs} - {burn_rate} = {logs_after_first_hour} logs left after the first hour.\n\nThen, {added_logs} more logs are added, so we add {added_logs} to the remaining logs:\n{logs_after_first_hour} + {added_logs} = {logs_start_second_hour} logs at the start of the second hour.\n\nAfter the second hour, the cookfire burns {burn_rate} logs, so we subtract {burn_rate} from the {logs_start_second_hour} logs:\n{logs_start_second_hour} - {burn_rate} = {logs_after_second_hour} logs left after the second hour.\n\nThen, {added_logs} more logs are added, so we add {added_logs} to the remaining logs:\n{logs_after_second_hour} + {added_logs} = {logs_start_third_hour} logs at the start of the third hour.\n\nAfter the third hour, the cookfire burns {burn_rate} logs, so we subtract {burn_rate} from the {logs_start_third_hour} logs:\n{logs_start_third_hour} - {burn_rate} = {logs_after_third_hour} log left after the third hour.\n\nThen, {added_logs} more logs are added, so we add {added_logs} to the remaining logs:\n{logs_after_third_hour} + {added_logs} = {logs_start_fourth_hour} logs at the start of the fourth hour.\n\nAfter the fourth hour, the cookfire burns {burn_rate} logs, so we subtract {burn_rate} from the {logs_start_fourth_hour} logs:\n{logs_start_fourth_hour} - {burn_rate} = {logs_after_fourth_hour} logs left after the fourth hour.\n\nSo, after {hours} hours, there will be \\boxed{{logs_after_fourth_hour}} logs left.",
+        "variable_relations": {
+            "variables": [
+                "burn_rate",
+                "initial_logs",
+                "added_logs",
+                "hours",
+                "logs_after_first_hour",
+                "logs_start_second_hour",
+                "logs_after_second_hour",
+                "logs_start_third_hour",
+                "logs_after_third_hour",
+                "logs_start_fourth_hour",
+                "logs_after_fourth_hour"
+            ],
+            "relations": {
+                "logs_after_first_hour": "{initial_logs} - {burn_rate}",
+                "logs_start_second_hour": "{logs_after_first_hour} + {added_logs}",
+                "logs_after_second_hour": "{logs_start_second_hour} - {burn_rate}",
+                "logs_start_third_hour": "{logs_after_second_hour} + {added_logs}",
+                "logs_after_third_hour": "{logs_start_third_hour} - {burn_rate}",
+                "logs_start_fourth_hour": "{logs_after_third_hour} + {added_logs}",
+                "logs_after_fourth_hour": "{logs_start_fourth_hour} - {burn_rate}"
+            },
+            "constraints": {
+                "burn_rate": "> 0",
+                "initial_logs": "> 0",
+                "added_logs": ">= 0",
+                "hours": ">= 0"
+            }
+        },
+        "hints": [
+            "Calculate logs remaining after each hour by subtracting burned logs.",
+            "Add new logs to the remaining logs at the end of each hour.",
+            "Repeat the process for the total number of hours specified."
+        ],
+        "category": "Arithmetic Sequences",
+        "difficulty": 38.0
+    },
+    {
+        "question": "Scott runs {miles_per_day} miles every Monday through Wednesday. Then he runs twice as far he ran on Monday every Thursday and Friday. How many miles will he run in a month with {weeks_in_month} weeks?",
+        "solution": "Scott runs {miles_per_day} miles every Monday through Wednesday, so he runs {miles_per_day} miles x 3 days = {miles_monday_to_wednesday} miles in total for those three days.\n\nOn Thursday and Friday, he runs twice as far as he ran on Monday. Since he ran {miles_per_day} miles on Monday, he runs 2 x {miles_per_day} miles = {miles_thursday_friday} miles on both Thursday and Friday.\n\nSo, for Thursday and Friday combined, he runs {miles_thursday_friday} miles x 2 days = {total_miles_thursday_friday} miles.\n\nIn total, for the whole week, Scott runs {miles_monday_to_wednesday} miles (Monday-Wednesday) + {total_miles_thursday_friday} miles (Thursday-Friday) = {total_miles_per_week} miles.\n\nSince there are {weeks_in_month} weeks in a month, Scott will run {total_miles_per_week} miles/week x {weeks_in_month} weeks = {total_miles_per_month} miles in a month.\n\nSo the answer is $\\boxed{{total_miles_per_month}}$.",
+        "variable_relations": {
+            "variables": [
+                "miles_per_day",
+                "weeks_in_month",
+                "miles_monday_to_wednesday",
+                "miles_thursday_friday",
+                "total_miles_thursday_friday",
+                "total_miles_per_week",
+                "total_miles_per_month"
+            ],
+            "relations": {
+                "miles_monday_to_wednesday": "{miles_per_day} * 3",
+                "miles_thursday_friday": "2 * {miles_per_day}",
+                "total_miles_thursday_friday": "{miles_thursday_friday} * 2",
+                "total_miles_per_week": "{miles_monday_to_wednesday} + {total_miles_thursday_friday}",
+                "total_miles_per_month": "{total_miles_per_week} * {weeks_in_month}"
+            },
+            "constraints": {
+                "weeks_in_month": "weeks_in_month > 0"
+            }
+        },
+        "hints": [
+            "Calculate miles run from Monday to Wednesday by multiplying daily miles by three.",
+            "Determine Thursday and Friday miles by doubling Monday's miles and multiplying by two.",
+            "Add weekly totals and multiply by number of weeks in the month."
+        ],
+        "category": "BODMAS",
+        "difficulty": 29.5
+    }
+]

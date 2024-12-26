@@ -3,9 +3,9 @@ from modules.solution import SolutionModel
 from modules.llms import OpenAI
 from modules.validation import validate_relations
 from modules.difficulty_model import DifficultyModel
-from modules.constraints import var_range
+from modules.constraints import var_range, Constraints
 from modules.generation import value_replace
-from lib.prompts import question_template_prompt, question_template_format, template_equation_prompt, hints_prompt, hints_format, category_prompt
+from lib.prompts import question_template_prompt, question_template_format, template_equation_prompt, hints_prompt, hints_format, category_prompt, category_format
 from lib.utils import str_to_json, save_json
 
 
@@ -13,13 +13,13 @@ def create_template(solution, question):
     openai = OpenAI()
 
     answer = solution.generate_solution(question)
-    print(f"Answer generated: {answer}")
-    print()
 
     question_prompt = question_template_prompt.format(question, answer, question_template_format)
 
     response = openai.query(question_prompt)
     response = str_to_json(response)
+    print(response)
+    print()
 
     question_template = response['question']
     solution_template = response['solution']
@@ -36,13 +36,18 @@ def create_template(solution, question):
         hints = str_to_json(hints)
         response['hints'] = hints
 
-        categorization_prompt = category_prompt.format(question)
+        categorization_prompt = category_prompt.format(question, category_format)
         category = openai.query(categorization_prompt)
+        category = str_to_json(category)
         response['category'] = category
 
         difficulty_model = DifficultyModel()
-        diff_score = difficulty_model.calculate_score(response, category)
+        diff_score = difficulty_model.calculate_score(response, category['subclass'])
         response['difficulty'] = diff_score
+
+        constraint_model = Constraints()
+        constraints = constraint_model.solve_inequalities(response['variable_relations'])
+        response['variable_relations']['constraints'] = constraints
 
         return response
     

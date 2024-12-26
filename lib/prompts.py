@@ -88,3 +88,22 @@ category_format = """{
     "superclass": "<superclass of the question>",
     "subclass": "<subclass of the question>"
 }"""
+
+
+manipulation_prompt = """
+Question: {}
+
+Instructions:
+Rewrite the given word problem using different wording and sentence structure. 
+The core mathematical problem must remain the same, meaning that solving both the original and the rewritten problem should yield the same answer.
+Avoid simply rephrasing individual words; aim for a more substantial change in the phrasing while retaining the original meaning and numerical values.
+
+Format: {}
+
+Return only a formatted JSON and do not include any explanations.
+"""
+
+manipulation_format = """{
+    question : <manipulated_question>
+}
+"""

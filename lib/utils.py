@@ -11,3 +11,6 @@ def save_json(data, filename):
         json.dump(data, f, indent=4)
 
     return True
+
+def find_independent_vars(variables, relations):
+    return [v for v in variables if v not in relations]
