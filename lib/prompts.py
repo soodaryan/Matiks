@@ -90,13 +90,17 @@ category_format = """{
 }"""
 
 
-manipulation_prompt = """
+manipulation_prompt = f"""
 Question: {}
 
 Instructions:
-Rewrite the given word problem using different wording and sentence structure. 
-The core mathematical problem must remain the same, meaning that solving both the original and the rewritten problem should yield the same answer.
-Avoid simply rephrasing individual words; aim for a more substantial change in the phrasing while retaining the original meaning and numerical values.
+Rewrite the given word problem using different wording and sentence structure. **When rewriting the question, replace the original nouns with different nouns, ensuring they remain concrete entities and are not transformed into variables.**  The underlying mathematical problem and the numerical values must be preserved, such that solving both the original and rewritten problems yields the same numerical answer.
+
+**Crucially, after rewriting the question with new nouns, you must also adjust the nouns within the corresponding solution to match those used in the rewritten question.** This ensures consistency between the problem statement and its resolution.
+
+For example, if the original question uses the noun "apples" and the solution refers to "apples," and you rewrite the question using "oranges," the solution must also refer to "oranges."
+
+Avoid simply substituting individual words; aim for a more significant change in phrasing while maintaining the original meaning and numerical relationships.
 
 Format: {}
 
