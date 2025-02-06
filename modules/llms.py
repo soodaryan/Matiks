@@ -2,6 +2,7 @@
 import requests
 import os
 from dotenv import load_dotenv
+import google.generativeai as genai
 
 load_dotenv()
 
@@ -43,3 +44,19 @@ class OpenAI:
             return data["data"]["answer"]
         except : 
             return data
+        
+
+class Gemini:
+    def __init__(self):
+        api_key = os.getenv('GENAI_API_KEY')
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel("gemini-1.5-flash") #gemini-2.0-flash-thinking-exp-01-21
+        
+    def generate_content(self, prompt):
+        try:
+            response = self.model.generate_content(prompt)
+            return response.text
+        except ValueError as e:
+            raise RuntimeError(f"Authentication failed: {str(e)}")
+        except Exception as e:
+            raise RuntimeError(f"Error generating content: {str(e)}")

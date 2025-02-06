@@ -1,27 +1,27 @@
 class DifficultyModel:
     def __init__(self):
         self.category_weight = {
-            "Arithmetic Sequences": 4,
-            "Geometric Sequences": 14,
-            "Mixed Sequences": 15,
-            "Prime Numbers": 12,
-            "Factorisation Problems": 6,
-            "Odd One Out": 1,
-            "Number Puzzle": 3,
-            "Time and Work Problems": 9,
-            "BODMAS": 5,
-            "Algebra": 10,
-            "Profit and Loss": 8,
-            "Probability and Statistics": 13,
-            "Currency and Exchange": 7,
-            "Area and Perimeter": 11,
-            "Volumne": 11,
-            "Angles":11,
-            "Triangles":11,
-            "Circles":11,
-            "Quadrilaterals":11,
-            "Spatial Reasoning":11,
-            "Calendar Problems": 2,
+            "Arithmetic Sequences": 4/15,
+            "Geometric Sequences": 14/15,
+            "Mixed Sequences": 15/15,
+            "Prime Numbers": 12/15,
+            "Factorisation Problems": 6/15,
+            "Odd One Out": 1/15,
+            "Number Puzzle": 3/15,
+            "Time and Work Problems": 9/15,
+            "BODMAS": 5/15,
+            "Algebra": 10/15,
+            "Profit and Loss": 8/15,
+            "Probability and Statistics": 13/15,
+            "Currency and Exchange": 7/15,
+            "Area and Perimeter": 11/15,
+            "Volumne": 11/15,
+            "Angles":11/15,
+            "Triangles":11/15,
+            "Circles":11/15,
+            "Quadrilaterals":11/15,
+            "Spatial Reasoning":11/15,
+            "Calendar Problems": 2/15,
         }
 
     def is_prime(self, n):
@@ -38,7 +38,7 @@ class DifficultyModel:
         score = 0
         
         for num in numbers:  
-            if num > 30:
+            if 70 >= num > 30:
                 score += 1
             
             if num > 70:
@@ -51,8 +51,8 @@ class DifficultyModel:
             # Prime numbers are typically harder
             if self.is_prime(int(num)):
                 score += 2
-        
-        return score
+        scaled_score = score
+        return scaled_score
     
     
     def calculate_score(self, resp, category):
@@ -60,7 +60,7 @@ class DifficultyModel:
             topic_complexity_weight = self.category_weight[category]
             
             num_vars = len(resp['variable_relations']['variables'])
-            num_steps = len(resp['solution'].split("."))
+            num_steps = len(resp['variable_relations']['relations'])
             rel = list(resp['variable_relations']['relations'].values())
             
             num_mul_or_division_steps = 0
@@ -72,9 +72,10 @@ class DifficultyModel:
                 if '/' in i or '*' in i:
                     num_mul_or_division_steps += 1
             
-            diff_score = 2.5 * topic_complexity_weight + 1.5 * num_vars + 0.5 * num_steps + 0.5 * num_add_or_subtract_steps + num_mul_or_division_steps
+            diff_score = 5 * topic_complexity_weight +  1.5 * num_vars + num_add_or_subtract_steps + 2 * num_mul_or_division_steps
+            scaled_diff_score = (diff_score / 40) * 15
             
-            return diff_score
+            return round(scaled_diff_score,2)
                
         except:
             print(f"{category} not in defined category")

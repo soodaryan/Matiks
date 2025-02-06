@@ -4,6 +4,9 @@ import pandas as pd
 import math
 import re
 from lib.utils import find_independent_vars
+import sympy as sp
+from functools import reduce
+import networkx as nx
 
 
 class RandomDataset:
@@ -87,3 +90,61 @@ class QuestionModel:
         }
 
         return res
+    
+
+
+MAX_VALUE = 20
+#get dependent and independent vaiables, make dependency graph, toposort and generate wrt constraints, uses sympy to simplify and test
+#returns json, if fails to generate in all constraints, returns none
+
+def compute_variable_relations(data):
+    variable_relations = data['variable_relations']
+    variables = set(variable_relations["variables"]) 
+    constraints = variable_relations["constraints"]
+    relations = variable_relations["relations"]
+    
+    cdep = {var for var, constraint in constraints.items() if isinstance(constraint[1], str) and constraint[1] in variables}
+    dependent_vars = set(relations.keys()).union(cdep)
+    independent_vars = variables - dependent_vars
+    G = nx.DiGraph()
+    G.add_nodes_from(variables)
+    [G.add_edge(var, dep_var) for dep_var, expr in relations.items() for var in variables if f'{{{var}}}' in expr]
+    [G.add_edge(max_val, var) for var, ( _, max_val) in constraints.items() if isinstance(max_val, str) and max_val in variables]
+    print(dependent_vars, "\n",independent_vars)
+    sympy_vars = {var: sp.Symbol(var) for var in variables}
+    sympy_relations = {dep_var : sp.sympify(expr.format(**sympy_vars), locals=sympy_vars) for dep_var, expr in relations.items()}
+    solved_expressions = {dep_var : sympy_relations[dep_var] for dep_var in nx.topological_sort(G) if dep_var in sympy_relations}
+    failed_states = set()
+    independent_value_ranges = {
+        var: list(range(max(1, int(constraints[var][0])), int(constraints[var][1]) + 1 if constraints[var][1] != math.inf else MAX_VALUE + 1))
+        for var in independent_vars
+    }
+    print(solved_expressions)
+    total_combinations = reduce(lambda a,b:a*b, map(len,independent_value_ranges.values()))
+    attempts = 0
+    while attempts < total_combinations:
+        independent_values = {var: random.choice(independent_value_ranges[var]) for var in independent_vars}
+        for temp_dep in cdep: independent_values[temp_dep] = random.randint(constraints[temp_dep][0],independent_values[constraints[temp_dep][1]])
+        computed_values , success = independent_values.copy() , True
+        for dep_var, expr in solved_expressions.items():
+            computed_values[dep_var] = expr.subs(computed_values)
+            if not computed_values[dep_var].is_integer or computed_values[dep_var] <= 0:
+                failed_states.add(tuple(independent_values.items()))
+                success = False
+                break
+        if success:break
+        attempts += 1
+    if attempts == total_combinations:return None
+
+    # Extracting only the final values and question template
+    result_data = {
+        "values": {var: int(computed_values[var]) for var in variables},
+        "question": data.get("question", "")
+    }
+
+    if not isinstance(result_data, dict):  # Ensure return type is dict
+        raise TypeError("Return value must be a dictionary")
+
+    return result_data  # Always returns a dict    
+    # if attempts == total_combinations:return None
+    # return json.dumps({var:{"relations":str(solved_expressions.get(var,var)),"value": int(computed_values[var])} for var in variables}, indent=4)

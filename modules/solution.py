@@ -20,7 +20,7 @@ class SolutionModel:
 
     def generate_solution(self, question):
         msgs = [
-            {"role": "user", "content": question + "\nPlease reason step by step, and put your final answer within \\boxed{}."}
+            {"role": "user", "content": question + "\n" + r"You are a maths expert. Please solve the following problem step by step in a logical and concise manner. Use clear and simple equations to explain the solution. Provide a summary of the final answer within a single paragraph, and ensure the final answer is enclosed within \boxed{} only. "}
         ]
         
         input_tensor = self.tokenizer.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt")
