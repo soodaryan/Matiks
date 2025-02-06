@@ -3,13 +3,20 @@ question_template_prompt = """
 
     Solution: {}
 
-    Create templates for these question and solution by adding variables and keeping the language same. Also give me all the variables and mathematical relations between them in json format. Enclose variables in curly brackets in json too.
-
     Format : {}
+    
+    Create templates for these question and solution by adding variables and keeping the language same. 
+    Also give me all the variables and mathematical relations between them in json format.
+    Ensure variables are enclosed within curly brackets in both the templates and the mathematical relations and mention the final answer in \boxed format as in given solution. 
+    Refer to the given example for generating templates.
+
+    *Example*:
+    Question: "John buys 5 ounces of silver and twice as much gold. The silver costs 2 per ounce. The gold is two times more expensive per ounce. How much does he spend on everything?"
+
+    Question Template: "John buys <silver_ounces> ounces of silver and twice as much gold. The silver costs <silver_cost_per_ounce> per ounce. The gold is <gold_price_multiplier> times more expensive per ounce. How much does he spend on everything?"
 
     Return only a formatted json and don't include any explanations
 """
-
 
 question_template_format = """
 { 
@@ -61,12 +68,12 @@ hints_format = """
 category_prompt = """Categorize the given question into the following *superclasses* of mathematics problems, and then into a specific *subclass*:  
 
 *Superclasses*:  
-1. **Sequences and Patterns**: Problems focused on identifying, extending, or analyzing numerical or visual patterns and sequences.  
-2. **Number Theory**: Problems exploring properties and relationships of numbers, including primes, factors, and numeric puzzles.  
-3. **Algebra and Arithmetic Operations**: Problems involving algebraic equations, expressions, and arithmetic operations such as applying BODMAS.  
-4. **Real-Life Applications**: Problems with practical scenarios, including work rates, financial transactions, conversions, and dates or calendars.  
-5. **Probability and Statistics**: Problems centered on analyzing data, calculating probabilities, or interpreting statistical measures.  
-6. **Geometry**: Problems related to shapes, angles, sizes, and spatial reasoning, including area, perimeter, volume, and geometric properties.  
+1. Sequences and Patterns: Problems focused on identifying, extending, or analyzing numerical or visual patterns and sequences.  
+2. Number Theory: Problems exploring properties and relationships of numbers, including primes, factors, and numeric puzzles.  
+3. Algebra and Arithmetic Operations: Problems involving algebraic equations, expressions, and arithmetic operations such as applying BODMAS.  
+4. Real-Life Applications: Problems with practical scenarios, including work rates, financial transactions, conversions, and dates or calendars.  
+5. Probability and Statistics: Problems centered on analyzing data, calculating probabilities, or interpreting statistical measures.  
+6. Geometry: Problems related to shapes, angles, sizes, and spatial reasoning, including area, perimeter, volume, and geometric properties.  
 
 *Subclasses*:  
 1. Sequences and Patterns: Arithmetic Sequences, Geometric Sequences, Mixed Sequences, Odd One Out.  
@@ -94,9 +101,13 @@ manipulation_prompt = """
 Question: {}
 
 Instructions:
-Rewrite the given word problem using different wording and sentence structure. 
-The core mathematical problem must remain the same, meaning that solving both the original and the rewritten problem should yield the same answer.
-Avoid simply rephrasing individual words; aim for a more substantial change in the phrasing while retaining the original meaning and numerical values.
+Rewrite the given word problem using different wording and sentence structure. **When rewriting the question, replace the original nouns with different nouns, ensuring they remain concrete entities and are not transformed into variables.**  The underlying mathematical problem and the numerical values must be preserved, such that solving both the original and rewritten problems yields the same numerical answer.
+
+**Crucially, after rewriting the question with new nouns, you must also adjust the nouns within the corresponding solution to match those used in the rewritten question.** This ensures consistency between the problem statement and its resolution.
+
+For example, if the original question uses the noun "apples" and the solution refers to "apples," and you rewrite the question using "oranges," the solution must also refer to "oranges."
+
+Avoid simply substituting individual words; aim for a more significant change in phrasing while maintaining the original meaning and numerical relationships.
 
 Format: {}
 
@@ -104,6 +115,7 @@ Return only a formatted JSON and do not include any explanations.
 """
 
 manipulation_format = """{
-    question : <manipulated_question>
+    question : <manipulated_question>,
+    solution : <manipulated_solution>
 }
 """
