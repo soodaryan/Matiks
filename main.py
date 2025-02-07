@@ -8,7 +8,8 @@ from modules.constraints import Constraints
 from modules.vector_db import update_big_query_database
 from lib.prompts import question_template_prompt, question_template_format, template_equation_prompt, hints_prompt, hints_format, category_prompt, category_format
 from lib.utils import str_to_json, save_json
-
+# from IPython.display import JSON, display
+from generate_questions import generate_new_question
 
 def create_template(solution, question):
     gemini = Gemini()
@@ -98,4 +99,16 @@ if __name__ == "__main__":
     save_json(data, save_path)
 
     data = json.dumps(data, indent=4)
-    update_big_query_database(data)
+    # update_big_query_database(data)
+    
+    for i in data:
+        try:
+            question_data = generate_new_question(i)
+            
+        except Exception as e:
+            print("="*60)
+            print(e)
+            print()
+            print("Some error occurred")
+            print("="*60)
+            continue
