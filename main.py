@@ -1,9 +1,11 @@
+import json
 from modules.questions import RandomDataset
 from modules.solution import SolutionModel
 from modules.llms import OpenAI, Gemini
 from modules.validation import validate_relations
 from modules.difficulty_model import DifficultyModel
 from modules.constraints import Constraints
+from modules.vector_db import update_big_query_database
 from lib.prompts import question_template_prompt, question_template_format, template_equation_prompt, hints_prompt, hints_format, category_prompt, category_format
 from lib.utils import str_to_json, save_json
 
@@ -94,3 +96,6 @@ if __name__ == "__main__":
 
     save_path = "question_templates.json"
     save_json(data, save_path)
+
+    data = json.dumps(data, indent=4)
+    update_big_query_database(data)

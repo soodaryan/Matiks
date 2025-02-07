@@ -8,3 +8,4 @@ venv
 requests
 lib/__pycache__
 modules/__pycache__
+matiks-new-auth-key.json
