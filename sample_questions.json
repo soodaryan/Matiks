@@ -1,0 +1,346 @@
+[
+    {
+        "question": "Keith bought {new_cards} new baseball trading cards to add to his collection. The next day his dog ate half of his collection. There are now only {cards_left} cards left. How many cards did Keith start with?",
+        "solution": "Let's denote the number of cards Keith started with as {initial_cards}. \n\nAccording to the problem, Keith bought {new_cards} new baseball trading cards, so the total number of cards he had after the purchase is {initial_cards} + {new_cards}.\n\nThe next day, his dog ate half of his collection. This means that the number of cards left is half of the total number of cards he had after the purchase. We can express this as ({initial_cards} + {new_cards}) / 2.\n\nWe know from the problem that there are now only {cards_left} cards left. So we can set up the equation:\n\n({initial_cards} + {new_cards}) / 2 = {cards_left}\n\nTo solve for {initial_cards}, we first multiply both sides of the equation by 2 to get rid of the fraction:\n\n{initial_cards} + {new_cards} = {cards_left} * 2\n\nThen, we subtract {new_cards} from both sides of the equation to isolate {initial_cards}:\n\n{initial_cards} = ({cards_left} * 2) - {new_cards}\n\nSo, {initial_cards} = {final_answer}.\n\nTherefore, Keith started with {final_answer} baseball trading cards.\n\nSo the answer is $\boxed{{final_answer}}$",
+        "variable_relations": {
+            "variables": [
+                "initial_cards",
+                "new_cards",
+                "cards_left",
+                "final_answer"
+            ],
+            "relations": {
+                "initial_cards": "({cards_left} * 2) - {new_cards}",
+                "final_answer": "({cards_left} * 2) - {new_cards}"
+            },
+            "constraints": {
+                "new_cards": [
+                    1,
+                    "cards_left"
+                ],
+                "cards_left": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "Focus on the number of cards remaining after the dog ate half the collection.",
+            "Work backwards: double the remaining cards to find the total before the dog's incident.",
+            "Subtract the newly bought cards from the doubled amount to find the initial number."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 5.75
+    },
+    {
+        "question": "Katerina purchases {num_pots} pots and {num_pans} pans at the home goods store. Each pot costs ${pot_cost}. The total cost of Katerina's items is ${total_cost}. If each pan is the same price, what is the cost of {num_pans_to_find} pans?",
+        "solution": "Let's denote the cost of each pan as P.\n\nKaterina purchased {num_pots} pots and {num_pans} pans, and each pot costs ${pot_cost}. So, the total cost of the pots is {num_pots} * ${pot_cost} = ${total_pot_cost}.\n\nThe total cost of Katerina's items is ${total_cost}. If we subtract the cost of the pots from the total cost, we can find out the total cost of the pans. So, the total cost of the pans is ${total_cost} - ${total_pot_cost} = ${total_pan_cost}.\n\nSince each pan is the same price, we can find the cost of one pan by dividing the total cost of the pans by the number of pans. So, the cost of one pan is ${total_pan_cost} / {num_pans} = ${pan_cost}.\n\nFinally, to find the cost of {num_pans_to_find} pans, we can multiply the cost of one pan by {num_pans_to_find}. So, the cost of {num_pans_to_find} pans is ${pan_cost} * {num_pans_to_find} = ${final_cost}.\n\nSo the answer is $\boxed{{final_cost}}$",
+        "variable_relations": {
+            "variables": [
+                "num_pots",
+                "num_pans",
+                "pot_cost",
+                "total_cost",
+                "num_pans_to_find",
+                "total_pot_cost",
+                "total_pan_cost",
+                "pan_cost",
+                "final_cost"
+            ],
+            "relations": {
+                "total_pot_cost": "{num_pots} * {pot_cost}",
+                "total_pan_cost": "{total_cost} - {total_pot_cost}",
+                "pan_cost": "{total_pan_cost} / {num_pans}",
+                "final_cost": "{pan_cost} * {num_pans_to_find}"
+            },
+            "constraints": {
+                "num_pots": [
+                    1,
+                    Infinity
+                ],
+                "num_pans": [
+                    1,
+                    Infinity
+                ],
+                "pot_cost": [
+                    1,
+                    Infinity
+                ],
+                "total_cost": [
+                    1,
+                    Infinity
+                ],
+                "num_pans_to_find": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "First, calculate the total cost of the pots Katerina bought.",
+            "Subtract the total pot cost from the total purchase cost to find the total pan cost.",
+            "Divide the total pan cost by the number of pans to find the cost of one pan, then multiply by the desired number of pans."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 8.94
+    },
+    {
+        "question": "Kohen has a business selling apples. Once a week, he orders {num_boxes} boxes of apples to add to his stock. If each box has {apples_per_box} apples and he sells {fraction_sold} of his stock in a certain week, what total number of apples is not sold?",
+        "solution": "Kohen orders {num_boxes} boxes of apples, and each box has {apples_per_box} apples, so he has a total of {num_boxes} * {apples_per_box} = {total_apples} apples in his stock.\nHe sells {fraction_sold} of his stock, which is {fraction_sold} * {total_apples} = {apples_sold} apples.\nThe total number of apples that is not sold is {total_apples} - {apples_sold} = {unsold_apples} apples.\nThe answer is $\boxed{{unsold_apples}}$.",
+        "variable_relations": {
+            "variables": [
+                "num_boxes",
+                "apples_per_box",
+                "fraction_sold",
+                "total_apples",
+                "apples_sold",
+                "unsold_apples"
+            ],
+            "relations": {
+                "total_apples": "{num_boxes} * {apples_per_box}",
+                "apples_sold": "{fraction_sold} * {total_apples}",
+                "unsold_apples": "{total_apples} - {apples_sold}"
+            },
+            "constraints": {
+                "num_boxes": [
+                    1,
+                    Infinity
+                ],
+                "apples_per_box": [
+                    1,
+                    Infinity
+                ],
+                "fraction_sold": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "First, calculate the total number of apples Kohen receives in his weekly order.",
+            "Next, determine how many apples Kohen sells based on the given fraction.",
+            "Finally, subtract the number of apples sold from the total to find the remainder."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 6.5
+    },
+    {
+        "question": "Jack will have {multiplier} times more handball trophies than Michael has right now in {years} years. If Michael has {initial_michael_trophies} trophies right now, and the number of his trophies increases by {michael_increase} in {years} years, what's the total number of trophies they'll have altogether after {years} years?",
+        "solution": "Let's denote the number of trophies Jack will have in {years} years as J. According to the problem, Jack will have {multiplier} times more trophies than Michael has right now, so we can write the equation:\n\nJ = {multiplier} * {initial_michael_trophies}\n\nSolving this equation gives:\n\nJ = {jack_trophies}\n\nSo, Jack will have {jack_trophies} trophies in {years} years.\n\nThe problem also states that the number of Michael's trophies will increase by {michael_increase} in {years} years. So, the total number of Michael's trophies after {years} years will be:\n\nM = {initial_michael_trophies} + {michael_increase}\n\nSolving this equation gives:\n\nM = {final_michael_trophies}\n\nSo, Michael will have {final_michael_trophies} trophies in {years} years.\n\nThe total number of trophies they'll have altogether after {years} years is the sum of the number of Jack's trophies and the number of Michael's trophies:\n\nTotal = J + M\n\nSubstituting the values of J and M into this equation gives:\n\nTotal = {jack_trophies} + {final_michael_trophies}\n\nSolving this equation gives:\n\nTotal = {total_trophies}\n\nSo, the total number of trophies they'll have altogether after {years} years is {total_trophies}.\n\nTherefore, the answer is $\boxed{{total_trophies}}$",
+        "variable_relations": {
+            "variables": [
+                "multiplier",
+                "years",
+                "initial_michael_trophies",
+                "michael_increase",
+                "jack_trophies",
+                "final_michael_trophies",
+                "total_trophies"
+            ],
+            "relations": {
+                "jack_trophies": "{multiplier} * {initial_michael_trophies}",
+                "final_michael_trophies": "{initial_michael_trophies} + {michael_increase}",
+                "total_trophies": "{jack_trophies} + {final_michael_trophies}"
+            },
+            "constraints": {
+                "multiplier": [
+                    1,
+                    Infinity
+                ],
+                "years": [
+                    1,
+                    Infinity
+                ],
+                "initial_michael_trophies": [
+                    1,
+                    Infinity
+                ],
+                "michael_increase": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "First, calculate how many trophies Jack will have in the future based on the given multiplier.",
+            "Next, determine Michael's future trophy count by adding his increase to his current total.",
+            "Finally, add Jack's future trophies and Michael's future trophies to find the combined total."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 6.69
+    },
+    {
+        "question": "It takes {minks_per_coat} mink skins to make a coat. Andy buys {initial_minks} minks and each mink has {babies_per_mink} babies, but half the total minks are set free by activists. How many coats can he make?",
+        "solution": "First, let's find out how many minks Andy has in total. He bought {initial_minks} minks and each mink has {babies_per_mink} babies. So, the total number of minks is {initial_minks} minks + {initial_minks} minks * {babies_per_mink} babies/mink = {initial_minks} minks + {total_babies} babies = {total_minks} minks.\n\nThen, half of the total minks are set free by activists. So, the number of minks left is {total_minks} minks / 2 = {remaining_minks} minks.\n\nFinally, it takes {minks_per_coat} mink skins to make a coat. So, the number of coats Andy can make is {remaining_minks} minks / {minks_per_coat} minks/coat = {coats} coats.\n\nSo the answer is $\boxed{{coats}}$",
+        "variable_relations": {
+            "variables": [
+                "minks_per_coat",
+                "initial_minks",
+                "babies_per_mink",
+                "total_babies",
+                "total_minks",
+                "remaining_minks",
+                "coats"
+            ],
+            "relations": {
+                "total_babies": "{initial_minks} * {babies_per_mink}",
+                "total_minks": "{initial_minks} + {total_babies}",
+                "remaining_minks": "{total_minks} / 2",
+                "coats": "{remaining_minks} / {minks_per_coat}"
+            },
+            "constraints": {
+                "minks_per_coat": [
+                    1,
+                    Infinity
+                ],
+                "initial_minks": [
+                    1,
+                    Infinity
+                ],
+                "babies_per_mink": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "Calculate the total number of minks Andy possesses after the minks have babies.",
+            "Remember that half the total minks are released; adjust your mink count accordingly.",
+            "Divide the remaining minks by the number of minks needed per coat to find the answer."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 7.81
+    },
+    {
+        "question": "Johnson has a sack of potatoes. He gives Gina {Gina_potatoes} potatoes, gives Tom twice as much potatoes as he gave Gina and gives one-third of the amount of potatoes he gave Tom to Anne. How many potatoes does he have left if the sack contains {total_potatoes} potatoes?",
+        "solution": "Let's denote the number of potatoes Johnson gave to Gina as G, to Tom as T, and to Anne as A.\n\nFrom the problem, we know that:\n\nG = {Gina_potatoes}\nT = 2 * G = 2 * {Gina_potatoes} = {Tom_potatoes}\nA = T / 3 = {Tom_potatoes} / 3 = {Anne_potatoes}\n\nThe total number of potatoes Johnson gave away is G + T + A = {Gina_potatoes} + {Tom_potatoes} + {Anne_potatoes} = {total_given_away}.\n\nThe sack originally contained {total_potatoes} potatoes. After giving away {total_given_away} potatoes, Johnson has {total_potatoes} - {total_given_away} = {potatoes_left} potatoes left.\n\nSo the answer is $\boxed{{potatoes_left}}$",
+        "variable_relations": {
+            "variables": [
+                "total_potatoes",
+                "Gina_potatoes",
+                "Tom_potatoes",
+                "Anne_potatoes",
+                "total_given_away",
+                "potatoes_left"
+            ],
+            "relations": {
+                "Tom_potatoes": "2 * {Gina_potatoes}",
+                "Anne_potatoes": "{Tom_potatoes} / 3",
+                "total_given_away": "{Gina_potatoes} + {Tom_potatoes} + {Anne_potatoes}",
+                "potatoes_left": "{total_potatoes} - {total_given_away}"
+            },
+            "constraints": {
+                "total_potatoes": [
+                    1,
+                    Infinity
+                ],
+                "Gina_potatoes": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "First, calculate how many potatoes Tom received, remembering he got twice Gina's amount.",
+            "Next, determine the number of potatoes Anne received, which is one-third of Tom's amount.",
+            "Finally, subtract the total potatoes given away from the initial amount in the sack."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 6.88
+    },
+    {
+        "question": "Rory collects rainwater. He has {initial_water_level} L of rainwater in his tank. During a heavy rainstorm, water flows into the tank at a rate of {water_flow_rate} L/min for {rain_duration} minutes. How much water is in the tank at the end of the heavy rain?",
+        "solution": "During the heavy rainstorm, water flows into the tank at a rate of {water_flow_rate} L/min for {rain_duration} minutes. So, the total amount of water that flows into the tank during the heavy rain is {water_flow_rate} L/min * {rain_duration} min = {added_water}. \n\nRory already has {initial_water_level} L of rainwater in his tank. So, at the end of the heavy rain, the total amount of water in the tank is {initial_water_level} L + {added_water} L = {final_water_level} L.\n\nSo the answer is $\boxed{{final_water_level}}$",
+        "variable_relations": {
+            "variables": [
+                "initial_water_level",
+                "water_flow_rate",
+                "rain_duration",
+                "added_water",
+                "final_water_level"
+            ],
+            "relations": {
+                "added_water": "{water_flow_rate} * {rain_duration}",
+                "final_water_level": "{initial_water_level} + {added_water}"
+            },
+            "constraints": {
+                "initial_water_level": [
+                    1,
+                    Infinity
+                ],
+                "water_flow_rate": [
+                    1,
+                    Infinity
+                ],
+                "rain_duration": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "First, calculate how much rainwater was added during the storm.",
+            "Remember to multiply the rate of water flow by the duration of the rain.",
+            "Finally, add the added rainwater to the initial water level in the tank."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 5.19
+    },
+    {
+        "question": "Brenda catches smallpox. She has {blisters_per_arm} blisters on each arm and {blisters_rest_body} blisters on the rest of her body. How many blisters does she have in total?",
+        "solution": "Brenda has {blisters_per_arm} blisters on each arm, so she has a total of {blisters_per_arm} x 2 = {total_blisters_arms} blisters on her arms.\nShe also has {blisters_rest_body} blisters on the rest of her body.\nTherefore, Brenda has a total of {total_blisters_arms} + {blisters_rest_body} = {total_blisters} blisters.\nThe answer is $\boxed{{total_blisters}}$",
+        "variable_relations": {
+            "variables": [
+                "blisters_per_arm",
+                "blisters_rest_body",
+                "total_blisters_arms",
+                "total_blisters"
+            ],
+            "relations": {
+                "total_blisters_arms": "{blisters_per_arm} * 2",
+                "total_blisters": "{total_blisters_arms} + {blisters_rest_body}"
+            },
+            "constraints": {
+                "blisters_per_arm": [
+                    1,
+                    Infinity
+                ],
+                "blisters_rest_body": [
+                    1,
+                    Infinity
+                ]
+            }
+        },
+        "hints": [
+            "First, calculate the total number of blisters on both of Brenda's arms.",
+            "Remember to add the blisters on Brenda's arms to those on the rest of her body.",
+            "The sum of blisters on her arms and the rest of her body gives the final answer."
+        ],
+        "category": {
+            "superclass": "Real-Life Applications",
+            "subclass": "Algebra"
+        },
+        "difficulty": 4.62
+    }
+]

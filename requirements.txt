@@ -5,3 +5,4 @@ datasets
 torch
 sympy
 google-generativeai
+vertexai

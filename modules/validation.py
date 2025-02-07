@@ -39,7 +39,7 @@ def validate_relations(equation, resp):
         for j in vars:
             print(f"Processing variable: {j}")
             print(f"Value: {val}")
-            val = val.replace(f"{j}", str(var_val[j])).replace("{", "").replace("}", "")
+            val = re.sub(rf"\{{({j})\}}", str(var_val[j]), val)
             print(f"Replacing {j} with value: {var_val[j]}")
 
         var_val[key] = eval(val)
@@ -49,8 +49,7 @@ def validate_relations(equation, resp):
     # Replace variable names in the equation
     for key, val in var_val.items():
         if key in equation.lower():
-            equation = equation.replace(key, str(val))
-            
+            equation = equation.replace(key, str(val))        
     
     # Cleanup the equation to make it evaluable
     equation = equation.replace("{", "").replace("}", "")

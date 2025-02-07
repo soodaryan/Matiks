@@ -9,17 +9,29 @@ from dotenv import load_dotenv
 from google.cloud import bigquery
 from google.oauth2 import service_account
 from vertexai.language_models import TextEmbeddingModel
-
+import pprint
 
 load_dotenv()
 
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 BIG_QUERY_AUTH = os.getenv('BQ_AUTH')
-
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv('BQ_AUTH')
 PROJECT_ID = 'matiks-question-generator'
 REGION = 'us-central1'
 
 CREDENTIALS = service_account.Credentials.from_service_account_file(BIG_QUERY_AUTH)
+
+
+DATASET_ID = "combined_template_df" # For example question_generator
+TABLE_ID = "table_v1" # For example february_questions, june_questione etc.
+
+client = bigquery.Client(credentials=CREDENTIALS)
+
+datasets = list(client.list_datasets())
+print("Datasets:", [dataset.dataset_id for dataset in datasets])
+
+tables = list(client.list_tables(DATASET_ID))
+print("Tables:", [table.table_id for table in tables])
 
 BASE_PROMPT = """
     Topic: {topic}
@@ -58,9 +70,8 @@ SCHEMA = [
     bigquery.SchemaField("embedding", "FLOAT64", mode="REPEATED")
 ]
 
-DATASET_ID = "dataset_id_for_storing_questions" # For example question_generator
-TABLE_ID = "table_id_for_storing_questions" # For example february_questions, june_questione etc.
-
+# DATASET_ID = "combined_template_df" # For example question_generator
+# TABLE_ID = "table_v1" # For example february_questions, june_questione etc.
 class Gemini:
     def __init__(self):
         api_key = GEMINI_API_KEY
@@ -167,6 +178,7 @@ def update_big_query_database(json_with_questions):
     question_object_to_insert = []
     for question_object in json_with_questions:
         question_object=fix_relation_constraints(replace_infinity(question_object))
+        print("error aa gya")
         question_object_to_insert.append({
             "question": question_object["question"],
             "solution": question_object["solution"],
@@ -176,11 +188,20 @@ def update_big_query_database(json_with_questions):
             "difficulty": question_object["difficulty"],
             "embedding": numpy_to_python_type(convert_to_embeddings_for_test(gekko, get_subclasses_subsubclasses(gemini, gen_prompt(BASE_PROMPT, question_object))))
         })
-
+    print(question_object_to_insert)
+    print("question_object_to_insert")
     errors = client.insert_rows_json(table_ref, question_object_to_insert)
+    print(errors)
     if errors:
-        print(f"Errors occured")
+        pprint.pprint(f"Errors occured")
         with open("error_log.json", "w+") as f:
             json.dump(errors, f, indent=4)
     else:
         print(f"Added successfully. No errors occured")
+        
+# with open(r"C:\Users\itsta\OneDrive\Desktop\HEMANG\Matiks\sample_questions.json", "r") as f:
+#     json_with_questions = json.load(f)
+       
+# pprint.pprint(json_with_questions[0])
+
+# update_big_query_database(json_with_questions)

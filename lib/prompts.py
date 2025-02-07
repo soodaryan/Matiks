@@ -5,17 +5,21 @@ question_template_prompt = """
 
     Format : {}
     
-    Create templates for these question and solution by adding variables and keeping the language same. 
-    Also give me all the variables and mathematical relations between them in json format.
-    Ensure variables are enclosed within curly brackets in both the templates and the mathematical relations and mention the final answer in \boxed format as in given solution. 
-    Refer to the given example for generating templates.
+    You are a template and JSON generator. I will give you word problems. For each word problem, you will output a JSON structure containing question and solution templates, a list of variables used in the templates, and the mathematical relations between those variables.
+
+    Follow these rules:
+    
+    1. **Templates:**
+        * Create a `question_template` representing the word problem with variables enclosed in curly braces.
+        * Create a `solution_template` showing the step-by-step solution, also with variables in curly braces.  Show the final answer in a boxed format: `\boxed`.
+    
+    2. **Variable Relations:**
+        * Within the `relations` section, meticulously define each mathematical relationship.  Crucially, ensure that *every single variable* and *not constants* within each relation is enclosed in its own separate set of curly brackets.  This means no grouping of variables within a single set of curly brackets is permitted.  Each variable must be individually wrapped.
 
     *Example*:
     Question: "John buys 5 ounces of silver and twice as much gold. The silver costs 2 per ounce. The gold is two times more expensive per ounce. How much does he spend on everything?"
 
     Question Template: "John buys <silver_ounces> ounces of silver and twice as much gold. The silver costs <silver_cost_per_ounce> per ounce. The gold is <gold_price_multiplier> times more expensive per ounce. How much does he spend on everything?"
-
-    Return only a formatted json and don't include any explanations
 """
 
 question_template_format = """
