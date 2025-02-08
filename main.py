@@ -99,7 +99,7 @@ if __name__ == "__main__":
     save_json(data, save_path)
     manipulated_data = []
     # data = json.dumps(data, indent=4)
-    update_big_query_database(data)
+    # update_big_query_database(data)
     
     for i in data:
         try:
