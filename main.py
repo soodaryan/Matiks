@@ -98,7 +98,7 @@ if __name__ == "__main__":
     save_path = "question_templates.json"
     save_json(data, save_path)
 
-    data = json.dumps(data, indent=4)
+    # data = json.dumps(data, indent=4)
     # update_big_query_database(data)
     
     for i in data:

@@ -228,9 +228,9 @@ def update_big_query_database(json_with_questions):
     else:
         print(f"Added successfully. No errors occured")
         
-with open(r"C:\Users\itsta\OneDrive\Desktop\HEMANG\Matiks\sample_questions.json", "r") as f:
-    json_with_questions = json.load(f)
+# with open(r"C:\Users\itsta\OneDrive\Desktop\HEMANG\Matiks\sample_questions.json", "r") as f:
+#     json_with_questions = json.load(f)
        
-pprint.pprint(json_with_questions[0])
+# pprint.pprint(json_with_questions[0])
 
-update_big_query_database(json_with_questions)
+# update_big_query_database(json_with_questions)
