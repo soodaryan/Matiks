@@ -97,14 +97,14 @@ if __name__ == "__main__":
 
     save_path = "question_templates.json"
     save_json(data, save_path)
-
+    manipulated_data = []
     # data = json.dumps(data, indent=4)
-    # update_big_query_database(data)
+    update_big_query_database(data)
     
     for i in data:
         try:
             question_data = generate_new_question(i)
-            
+            manipulated_data.append(question_data)
         except Exception as e:
             print("="*60)
             print(e)
@@ -112,3 +112,6 @@ if __name__ == "__main__":
             print("Some error occurred")
             print("="*60)
             continue
+    print(data[0])
+    update_big_query_database(manipulated_data)
+    print("Data saved")

@@ -33,7 +33,10 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 5.75
+        "difficulty": 5.75,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     },
     {
         "question": "Katerina purchases {num_pots} pots and {num_pans} pans at the home goods store. Each pot costs ${pot_cost}. The total cost of Katerina's items is ${total_cost}. If each pan is the same price, what is the cost of {num_pans_to_find} pans?",
@@ -88,7 +91,10 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 8.94
+        "difficulty": 8.94,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     },
     {
         "question": "Kohen has a business selling apples. Once a week, he orders {num_boxes} boxes of apples to add to his stock. If each box has {apples_per_box} apples and he sells {fraction_sold} of his stock in a certain week, what total number of apples is not sold?",
@@ -131,7 +137,10 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 6.5
+        "difficulty": 6.5,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     },
     {
         "question": "Jack will have {multiplier} times more handball trophies than Michael has right now in {years} years. If Michael has {initial_michael_trophies} trophies right now, and the number of his trophies increases by {michael_increase} in {years} years, what's the total number of trophies they'll have altogether after {years} years?",
@@ -179,7 +188,10 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 6.69
+        "difficulty": 6.69,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     },
     {
         "question": "It takes {minks_per_coat} mink skins to make a coat. Andy buys {initial_minks} minks and each mink has {babies_per_mink} babies, but half the total minks are set free by activists. How many coats can he make?",
@@ -224,7 +236,10 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 7.81
+        "difficulty": 7.81,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     },
     {
         "question": "Johnson has a sack of potatoes. He gives Gina {Gina_potatoes} potatoes, gives Tom twice as much potatoes as he gave Gina and gives one-third of the amount of potatoes he gave Tom to Anne. How many potatoes does he have left if the sack contains {total_potatoes} potatoes?",
@@ -264,7 +279,10 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 6.88
+        "difficulty": 6.88,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     },
     {
         "question": "Rory collects rainwater. He has {initial_water_level} L of rainwater in his tank. During a heavy rainstorm, water flows into the tank at a rate of {water_flow_rate} L/min for {rain_duration} minutes. How much water is in the tank at the end of the heavy rain?",
@@ -305,7 +323,10 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 5.19
+        "difficulty": 5.19,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     },
     {
         "question": "Brenda catches smallpox. She has {blisters_per_arm} blisters on each arm and {blisters_rest_body} blisters on the rest of her body. How many blisters does she have in total?",
@@ -341,6 +362,9 @@
             "superclass": "Real-Life Applications",
             "subclass": "Algebra"
         },
-        "difficulty": 4.62
+        "difficulty": 4.62,
+        "manipulated_question": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?",
+
+        "manipulated_solution": "To pass the time while she is waiting somewhere Carla likes to count things around her. While she is waiting for school to start on Monday she counts the tiles on the ceiling--{monday_ceiling_tiles}. While she is waiting for everyone to finish their tests after she has handed in hers, she counts the books in the room--{monday_books}. On Tuesday Carla counts all the tiles {tuesday_tile_multiplier} times in a row and she counts the books {tuesday_book_multiplier} times in a row when she has to wait for a long time for the teacher to finish handing out the graded tests. If every time Carla counts something counts as once, how many times has Carla counted something on Tuesday?"
     }
 ]

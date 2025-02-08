@@ -4,9 +4,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.constraints",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: constraints."
             }
         ]
     },
@@ -15,9 +15,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.relations",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: relations."
             }
         ]
     },
@@ -26,9 +26,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.constraints",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: constraints."
             }
         ]
     },
@@ -37,9 +37,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.constraints",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: constraints."
             }
         ]
     },
@@ -48,9 +48,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.constraints",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: constraints."
             }
         ]
     },
@@ -59,9 +59,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.relations",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: relations."
             }
         ]
     },
@@ -70,9 +70,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.constraints",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: constraints."
             }
         ]
     },
@@ -81,9 +81,9 @@
         "errors": [
             {
                 "reason": "invalid",
-                "location": "variable_relation",
+                "location": "variable_relations.constraints",
                 "debugInfo": "",
-                "message": "no such field: variable_relation."
+                "message": "Array specified for non-repeated field: constraints."
             }
         ]
     }

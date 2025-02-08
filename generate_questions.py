@@ -17,9 +17,9 @@ def generate_new_question(data):
         man_prompt = manipulation_prompt.format(result['question'],  manipulation_format)
         res = gemini.generate_content(man_prompt)
         res = str_to_json(res)
-        result['manipulated_question'] = res['question'].format(**result['values'])
-        result['manipulated_solution'] = res['solution'].format(**result['values'])
+        data['manipulated_question'] = res['question'].format(**result['values'])
+        data['manipulated_solution'] = res['solution'].format(**result['values'])
     except:
         print('Some error occurred...')
 
-    return result
+    return data

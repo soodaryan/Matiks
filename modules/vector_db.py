@@ -7,6 +7,7 @@ import numpy as np
 import google.generativeai as genai
 from dotenv import load_dotenv 
 from google.cloud import bigquery
+from google.api_core.exceptions import Conflict
 from google.oauth2 import service_account
 from vertexai.language_models import TextEmbeddingModel
 import pprint
@@ -23,7 +24,7 @@ CREDENTIALS = service_account.Credentials.from_service_account_file(BIG_QUERY_AU
 
 
 DATASET_ID = "combined_template_df" # For example question_generator
-TABLE_ID = "table_v1" # For example february_questions, june_questione etc.
+TABLE_ID = "matiks-testing-2" # For example february_questions, june_questione etc.
 
 client = bigquery.Client(credentials=CREDENTIALS)
 
@@ -54,11 +55,11 @@ SCHEMA = [
     bigquery.SchemaField(
         "variable_relations", "RECORD", mode="NULLABLE", fields=[
             bigquery.SchemaField("variables", "STRING", mode="REPEATED"),
-            bigquery.SchemaField("relations", "RECORD", mode="NULLABLE", fields=[
+            bigquery.SchemaField("relations", "RECORD", mode="REPEATED", fields=[
                 bigquery.SchemaField("key", "STRING", mode="REPEATED"),
                 bigquery.SchemaField("value", "STRING", mode="REPEATED")
             ]),
-            bigquery.SchemaField("constraints", "RECORD", mode="NULLABLE", fields=[
+            bigquery.SchemaField("constraints", "RECORD", mode="REPEATED", fields=[
                 bigquery.SchemaField("key", "STRING", mode="REPEATED"),
                 bigquery.SchemaField("value", "STRING", mode="REPEATED")
             ])
@@ -71,7 +72,10 @@ SCHEMA = [
         bigquery.SchemaField("subclass", "STRING", mode="NULLABLE")
     ]),
     bigquery.SchemaField("difficulty", "FLOAT64", mode="REQUIRED"),
-    bigquery.SchemaField("embedding", "FLOAT64", mode="REPEATED")
+    bigquery.SchemaField("manipulated_question", "STRING", mode="REQUIRED"),
+    bigquery.SchemaField("manipulated_solution", "STRING", mode="REQUIRED"),
+    bigquery.SchemaField("embedding", "FLOAT64", mode="REPEATED"),
+    
 ]
 
 # DATASET_ID = "combined_template_df" # For example question_generator
@@ -105,14 +109,25 @@ def init_bigquery_client():
 
 def init_big_query_db(client):
     dataset_ref = client.dataset(DATASET_ID)
-    dataset = bigquery.Dataset(dataset_ref)
-    client.create_dataset(dataset, exists_ok=True)
+    try:
+        client.get_dataset(dataset_ref)  # Check if dataset exists
+        print(f"Dataset {DATASET_ID} already exists.")
+    except Exception:  # Dataset doesn't exist, create it
+        dataset = bigquery.Dataset(dataset_ref)
+        dataset.location = "US"  # Change this as per your need
+        client.create_dataset(dataset)
+        print(f"Created dataset {DATASET_ID}")
     return dataset_ref
 
 def init_big_query_table(client, dataset_ref):
     table_ref = dataset_ref.table(TABLE_ID)
-    table = bigquery.Table(table_ref, schema=SCHEMA)
-    client.create_table(table, exists_ok=True)
+    try:
+        client.get_table(table_ref)  # Check if table exists
+        print(f"Table {TABLE_ID} already exists.")
+    except Exception:  # Table doesn't exist, create it
+        table = bigquery.Table(table_ref, schema=SCHEMA)
+        client.create_table(table)
+        print(f"Created table {TABLE_ID}")
     return table_ref
 
         
@@ -211,11 +226,14 @@ def update_big_query_database(json_with_questions):
                 "subclass": question_object["category"]["subclass"]
             },
             "difficulty": float(question_object["difficulty"]),
+            "manipulated_question": question_object["manipulated_question"],
+            "manipulated_solution": question_object["manipulated_solution"],
             "embedding": numpy_to_python_type(
                 convert_to_embeddings_for_test(
                     gekko, get_subclasses_subsubclasses(gemini, gen_prompt(BASE_PROMPT, question_object))
                 )
             )
+            
         })
     print(question_object_to_insert)
     print("question_object_to_insert")
@@ -228,9 +246,9 @@ def update_big_query_database(json_with_questions):
     else:
         print(f"Added successfully. No errors occured")
         
-# with open(r"C:\Users\itsta\OneDrive\Desktop\HEMANG\Matiks\sample_questions.json", "r") as f:
-#     json_with_questions = json.load(f)
+with open(r"C:\Users\itsta\OneDrive\Desktop\HEMANG\Matiks\sample_questions.json", "r") as f:
+    json_with_questions = json.load(f)
        
-# pprint.pprint(json_with_questions[0])
+pprint.pprint(json_with_questions[0])
 
-# update_big_query_database(json_with_questions)
+update_big_query_database(json_with_questions)
