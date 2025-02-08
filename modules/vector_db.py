@@ -235,10 +235,10 @@ def update_big_query_database(json_with_questions):
             )
             
         })
-    print(question_object_to_insert)
-    print("question_object_to_insert")
+    # print(question_object_to_insert)
+    print("Question Object Created, Adding to BigQuery...")
     errors = client.insert_rows_json(table_ref, question_object_to_insert)
-    print(errors)
+    # print(errors)
     if errors:
         pprint.pprint(f"Errors occured")
         with open("error_log.json", "w+") as f:

@@ -110,7 +110,7 @@ def compute_variable_relations(data):
     G.add_nodes_from(variables)
     [G.add_edge(var, dep_var) for dep_var, expr in relations.items() for var in variables if f'{{{var}}}' in expr]
     [G.add_edge(max_val, var) for var, ( _, max_val) in constraints.items() if isinstance(max_val, str) and max_val in variables]
-    print(dependent_vars, "\n",independent_vars)
+    # print(dependent_vars, "\n",independent_vars)
     sympy_vars = {var: sp.Symbol(var) for var in variables}
     sympy_relations = {dep_var : sp.sympify(expr.format(**sympy_vars), locals=sympy_vars) for dep_var, expr in relations.items()}
     solved_expressions = {dep_var : sympy_relations[dep_var] for dep_var in nx.topological_sort(G) if dep_var in sympy_relations}
