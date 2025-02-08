@@ -1,0 +1,90 @@
+[
+    {
+        "index": 0,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    },
+    {
+        "index": 1,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    },
+    {
+        "index": 2,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    },
+    {
+        "index": 3,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    },
+    {
+        "index": 4,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    },
+    {
+        "index": 5,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    },
+    {
+        "index": 6,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    },
+    {
+        "index": 7,
+        "errors": [
+            {
+                "reason": "invalid",
+                "location": "variable_relation",
+                "debugInfo": "",
+                "message": "no such field: variable_relation."
+            }
+        ]
+    }
+]

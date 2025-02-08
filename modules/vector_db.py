@@ -54,10 +54,14 @@ SCHEMA = [
     bigquery.SchemaField(
         "variable_relations", "RECORD", mode="NULLABLE", fields=[
             bigquery.SchemaField("variables", "STRING", mode="REPEATED"),
-
-            bigquery.SchemaField("relations", "JSON", mode="NULLABLE"),
-
-            bigquery.SchemaField("constraints", "JSON", mode="NULLABLE")
+            bigquery.SchemaField("relations", "RECORD", mode="NULLABLE", fields=[
+                bigquery.SchemaField("key", "STRING", mode="REPEATED"),
+                bigquery.SchemaField("value", "STRING", mode="REPEATED")
+            ]),
+            bigquery.SchemaField("constraints", "RECORD", mode="NULLABLE", fields=[
+                bigquery.SchemaField("key", "STRING", mode="REPEATED"),
+                bigquery.SchemaField("value", "STRING", mode="REPEATED")
+            ])
         ]
     ),
 
@@ -166,6 +170,24 @@ def fix_relation_constraints(entry):
     
     return entry
 
+def prepare_variable_relations_for_bigquery(variable_relations):
+    """Convert variable_relations dictionary to BigQuery-compatible format with nested RECORDs."""
+    
+    def dict_to_record(data):
+        """Convert a dictionary to a list of key-value pairs (BigQuery STRUCT format)."""
+        return [{"key": k, "value": v} for k, v in data.items()]
+    
+    return {
+        "variables": (
+            variable_relations["variables"]
+            if isinstance(variable_relations["variables"], list)
+            else [variable_relations["variables"]]
+        ),
+        "relations": dict_to_record(variable_relations["relations"]) if isinstance(variable_relations["relations"], dict) else [],
+        "constraints": dict_to_record(variable_relations["constraints"]) if isinstance(variable_relations["constraints"], dict) else [],
+    }
+
+
 def update_big_query_database(json_with_questions):
     init_vertexai_proj()
     client = init_bigquery_client()
@@ -177,16 +199,23 @@ def update_big_query_database(json_with_questions):
 
     question_object_to_insert = []
     for question_object in json_with_questions:
-        question_object=fix_relation_constraints(replace_infinity(question_object))
-        print("error aa gya")
+        question_object = fix_relation_constraints(replace_infinity(question_object))
+
         question_object_to_insert.append({
             "question": question_object["question"],
             "solution": question_object["solution"],
-            "variable_relations": question_object["variable_relations"],
+            "variable_relations": prepare_variable_relations_for_bigquery(question_object["variable_relations"]),
             "hints": question_object["hints"],
-            "category": question_object["category"],
-            "difficulty": question_object["difficulty"],
-            "embedding": numpy_to_python_type(convert_to_embeddings_for_test(gekko, get_subclasses_subsubclasses(gemini, gen_prompt(BASE_PROMPT, question_object))))
+            "category": {
+                "superclass": question_object["category"]["superclass"],
+                "subclass": question_object["category"]["subclass"]
+            },
+            "difficulty": float(question_object["difficulty"]),
+            "embedding": numpy_to_python_type(
+                convert_to_embeddings_for_test(
+                    gekko, get_subclasses_subsubclasses(gemini, gen_prompt(BASE_PROMPT, question_object))
+                )
+            )
         })
     print(question_object_to_insert)
     print("question_object_to_insert")
@@ -199,9 +228,9 @@ def update_big_query_database(json_with_questions):
     else:
         print(f"Added successfully. No errors occured")
         
-# with open(r"C:\Users\itsta\OneDrive\Desktop\HEMANG\Matiks\sample_questions.json", "r") as f:
-#     json_with_questions = json.load(f)
+with open(r"C:\Users\itsta\OneDrive\Desktop\HEMANG\Matiks\sample_questions.json", "r") as f:
+    json_with_questions = json.load(f)
        
-# pprint.pprint(json_with_questions[0])
+pprint.pprint(json_with_questions[0])
 
-# update_big_query_database(json_with_questions)
+update_big_query_database(json_with_questions)
