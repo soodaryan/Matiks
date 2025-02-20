@@ -45,15 +45,14 @@ class DifficultyModel:
                 score += 2
                 
             if num != 0 and num not in [1, 2, 5, 10, 25, 50, 100]:
-            	if num % 2 != 0 and num % 5 != 0:
-            		score += 1
+                if num % 2 != 0 and num % 5 != 0:
+                    score += 1
             
             # Prime numbers are typically harder
             if self.is_prime(int(num)):
                 score += 2
         scaled_score = score
-        return scaled_score
-    
+        return scaled_score    
     
     def calculate_score(self, resp, category):
         try:
