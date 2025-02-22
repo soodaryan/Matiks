@@ -40,17 +40,18 @@ class DifficultyModel:
         for num in numbers:  
             if 70 >= num > 30:
                 score += 1
-            
+        
             if num > 70:
                 score += 2
-                
-            if num != 0 and num not in [1, 2, 5, 10, 25, 50, 100]:
-            	if num % 2 != 0 and num % 5 != 0:
-            		score += 1
             
-            # Prime numbers are typically harder
+            if num != 0 and num not in [1, 2, 5, 10, 25, 50, 100]:
+                if num % 2 != 0 and num % 5 != 0:
+                    score += 1
+        
+        # Prime numbers are typically harder
             if self.is_prime(int(num)):
                 score += 2
+                
         scaled_score = score
         return scaled_score
     
